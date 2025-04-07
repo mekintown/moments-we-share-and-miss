@@ -12,7 +12,7 @@ const Page = () => {
         transition={{ duration: 1 }}
         className="text-primary row-span-4 text-center text-subheader z-10"
       >
-        ชีวิตของเรา <br /> เต็มไปด้วยความทรงจำมากมาย…
+        แม้บางเรื่องจะเลือนราง...
       </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
@@ -20,7 +20,7 @@ const Page = () => {
         transition={{ duration: 0.6 }}
       >
         <Image
-          src={"/illustrations/web-intro-1.webp"}
+          src={"/illustrations/web-intro-2.webp"}
           alt={"mountains"}
           layout="fill"
           objectFit="cover"

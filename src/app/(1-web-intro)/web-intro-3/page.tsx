@@ -20,7 +20,7 @@ const Page = () => {
         transition={{ duration: 0.6 }}
       >
         <Image
-          src={"/illustrations/web-intro-1.webp"}
+          src={"/illustrations/web-intro-2.webp"}
           alt={"mountains"}
           layout="fill"
           objectFit="cover"
