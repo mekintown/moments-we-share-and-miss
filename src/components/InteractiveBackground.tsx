@@ -20,7 +20,7 @@ const InteractiveBackground = () => {
 
     // Handle stop-motion animation
     if (Array.isArray(config.image)) {
-      animateSequence(config.image, config.stopMotionDuration || 1000, () => {
+      animateSequence(config.image, config.stopMotionDuration || 2000, () => {
         if (config.redirectTo) {
           router.push(config.redirectTo);
         }
@@ -31,7 +31,7 @@ const InteractiveBackground = () => {
       setBgImgSrc(config.image);
       setTimeout(() => {
         router.push(config.redirectTo as string);
-      }, config.stopMotionDuration || 2000);
+      }, config.stopMotionDuration || 2500);
     }
     // Handle static backgrounds without redirects
     else {

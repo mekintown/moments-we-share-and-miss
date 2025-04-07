@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Pridi } from "next/font/google";
 import "./globals.css";
 import AnimatedLayout from "@/components/AnimatedLayout";
-import BaseLayout from "@/components/BaseLayout";
 
 const pridi = Pridi({
   variable: "--font-pridi",
@@ -25,9 +24,7 @@ export default function RootLayout({
         style={{ fontFamily: "var(--font-pridi), sans-serif" }}
         className={`${pridi.variable} antialiased relative mx-auto min-h-screen w-full max-w-md overflow-x-hidden overscroll-none`}
       >
-        <AnimatedLayout>
-          <BaseLayout>{children}</BaseLayout>
-        </AnimatedLayout>
+        <AnimatedLayout>{children}</AnimatedLayout>
       </body>
     </html>
   );

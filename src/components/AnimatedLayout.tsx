@@ -1,10 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import InteractiveBackground from "@/components/InteractiveBackground";
 import { PropsWithChildren } from "react";
+import { usePathname } from "next/navigation";
 
 const AnimatedLayout = ({ children }: PropsWithChildren) => {
+  const pathname = usePathname();
   return (
     <>
       <motion.div
@@ -15,14 +17,18 @@ const AnimatedLayout = ({ children }: PropsWithChildren) => {
         <InteractiveBackground />
       </motion.div>
 
-      <motion.div
-        className={`relative z-10 font-th`}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-      >
-        {children}
-      </motion.div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={pathname}
+          className={`relative z-10 font-th grid grid-rows-4 p-10 w-full h-lvh place-items-center `}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          //   exit={{ opacity: 0, y: -40 }}
+          transition={{ duration: 1.2 }}
+        >
+          {children}
+        </motion.div>
+      </AnimatePresence>
     </>
   );
 };
