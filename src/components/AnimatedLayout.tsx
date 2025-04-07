@@ -4,11 +4,7 @@ import { motion } from "framer-motion";
 import InteractiveBackground from "@/components/InteractiveBackground";
 import { PropsWithChildren } from "react";
 
-interface AnimatedLayoutProps extends PropsWithChildren {
-  fontClass: string;
-}
-
-const AnimatedLayout = ({ fontClass, children }: AnimatedLayoutProps) => {
+const AnimatedLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
       <motion.div
@@ -20,7 +16,7 @@ const AnimatedLayout = ({ fontClass, children }: AnimatedLayoutProps) => {
       </motion.div>
 
       <motion.div
-        className={`${fontClass} relative z-10`}
+        className={`relative z-10`}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.6 }}

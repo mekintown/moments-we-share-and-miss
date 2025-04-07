@@ -8,7 +8,7 @@ interface backgroundConfig {
 
 export const backgroundMapConfig: Record<string, backgroundConfig> = {
   "": {
-    image: "/background/0.webp",
+    image: "/backgrounds/main-background.gif",
   },
   "0-1": {
     image: "/background/0.webp",
