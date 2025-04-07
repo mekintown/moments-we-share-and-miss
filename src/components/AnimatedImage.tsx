@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 interface AnimatedImageProps extends ImageProps {
   src: string;
-  preloadSrcs: (typeof backgroundMapConfig)[keyof typeof backgroundMapConfig]["imagePreload"];
+  preloadSrcs: (typeof backgroundMapConfig)[keyof typeof backgroundMapConfig]["imagesPreload"];
 }
 
 const AnimatedImage = ({

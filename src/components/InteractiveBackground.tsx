@@ -55,7 +55,7 @@ const InteractiveBackground = () => {
   };
 
   const imagePreloadSrc = useMemo(
-    () => backgroundMapConfig[page]?.imagePreload,
+    () => backgroundMapConfig[page]?.imagesPreload,
     [page]
   );
 
