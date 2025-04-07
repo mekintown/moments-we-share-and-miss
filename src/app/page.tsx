@@ -12,7 +12,7 @@ const Home = () => (
       />
     </div>
     <div className="row-start-4">
-      <NextButton label="เริ่มต้น" url="/web-opening-1 " />
+      <NextButton label="เริ่มต้น" url="/web-opening-1" />
     </div>
   </>
 );

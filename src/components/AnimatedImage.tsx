@@ -2,7 +2,7 @@
 
 import { backgroundMapConfig } from "@/configs/bg-config";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image, { ImageProps } from "next/image";
 import { useEffect, useState } from "react";
