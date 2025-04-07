@@ -65,9 +65,6 @@ const AnimatedImage = ({
           priority={true}
           {...props}
           className="hidden"
-          onLoad={() => {
-            console.log(`preloaded image: ${source}`);
-          }}
         />
       ))}
     </>
