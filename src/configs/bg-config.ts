@@ -23,7 +23,7 @@ export const backgroundMapConfig: Record<string, backgroundConfig> = {
   "web-intro-2": {
     image: "/backgrounds/main-background.gif",
     imagesPreload: [],
-    redirectTo: "web-intro-3",
+    // redirectTo: "web-intro-3",
   },
   "web-intro-3": {
     image: "/backgrounds/main-background.gif",

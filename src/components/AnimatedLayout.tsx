@@ -20,11 +20,11 @@ const AnimatedLayout = ({ children }: PropsWithChildren) => {
       <AnimatePresence mode="wait">
         <motion.div
           key={pathname}
-          className={`relative z-10 font-th`}
+          className={`relative z-10 font-th grid grid-rows-4 p-10 w-full h-lvh place-items-center `}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -40 }}
-          transition={{ duration: 1.5 }}
+          //   exit={{ opacity: 0, y: -40 }}
+          transition={{ duration: 1.2 }}
         >
           {children}
         </motion.div>
