@@ -41,6 +41,24 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --text-subheader: 24px;
+  --text-subheader--line-height: 32px;
+  --text-subheader--font-weight: 300;
+  --text-reveal: 22px;
+  --text-reveal--line-height: 32px;
+  --text-reveal--font-weight: 300;
+  --text-body: 16px;
+  --text-body--line-height: 24px;
+  --text-body--font-weight: 300;
+  --text-body-bold: 16px;
+  --text-body-bold--line-height: 24px;
+  --text-body-bold--font-weight: 300;
+  --text-remark: 14px;
+  --text-remark--line-height: 20px;
+  --text-remark--font-weight: 300;
+  --text-remark-bold: 14px;
+  --text-remark-bold--line-height: 20px;
+  --text-remark-bold--font-weight: 300;
 }
 
 :root {
@@ -78,14 +96,6 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  --text-subheader: 24px;
-  --text-subheader--line-height: 32px;
-  --text-reveal: 22px;
-  --text-reveal--line-height: 32px;
-  --text-body: 16px;
-  --text-body--line-height: 24px;
-  --text-remark: 14px;
-  --text-remark--line-height: 20px;
 }
 
 .dark {

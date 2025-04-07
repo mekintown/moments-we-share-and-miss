@@ -15,4 +15,8 @@ export const backgroundMapConfig: Record<string, backgroundConfig> = {
     image: "/backgrounds/main-background.gif",
     imagesPreload: [],
   },
+  "web-intro-1": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
 } as const;
