@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Pridi } from "next/font/google";
 import "./globals.css";
 import AnimatedLayout from "@/components/AnimatedLayout";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const pridi = Pridi({
+  variable: "--font-pridi",
+  subsets: ["latin", "thai"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -26,7 +22,8 @@ export default function RootLayout({
   return (
     <html lang="th">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative mx-auto min-h-screen w-full max-w-md overflow-x-hidden overscroll-none`}
+        style={{ fontFamily: "var(--font-pridi), sans-serif" }}
+        className={`${pridi.variable} antialiased relative mx-auto min-h-screen w-full max-w-md overflow-x-hidden overscroll-none`}
       >
         <AnimatedLayout>{children}</AnimatedLayout>
       </body>
