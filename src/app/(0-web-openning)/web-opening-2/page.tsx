@@ -1,0 +1,31 @@
+"use client";
+import { Separator } from "@/components/ui/separator";
+import { motion } from "framer-motion";
+
+export default function Page() {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        duration: 1,
+        delay: 1,
+      }}
+      className="text-center text-body space-y-2"
+    >
+      <Separator className="bg-main-yellow" />
+      <div className="text-main-cream">
+        เราจึงอยากขอชวนคุณใช้เวลาประมาณ
+        <br /> 7 นาทีค่อย ๆ ย้อนกลับไปใน <br />
+        ห้วงความทรงจำ นึกถึงวันเวลาที่เคยได้ <br />
+        แบ่งปันรอยยิ้ม น้ำตา หรือเสียงหัวเราะ
+        <br />
+        ร่วมกับคนในครอบครัว
+        <br /> หากให้นึกถึงช่วงเวลาเหล่านั้น
+        <br />
+        มีเรื่องไหนที่เรายังจำได้อยู่เสมอบ้างนะ…
+      </div>
+      <Separator className="bg-main-yellow" />
+    </motion.div>
+  );
+}
