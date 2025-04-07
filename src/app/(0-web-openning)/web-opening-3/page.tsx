@@ -1,19 +1,9 @@
 "use client";
 import { Separator } from "@/components/ui/separator";
-import { motion } from "framer-motion";
 
 export default function Page() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{
-        duration: 1,
-        delay: 1,
-      }}
-      className="row-span-2 text-center text-body space-y-2"
-    >
-      <Separator className="bg-main-yellow" />
+    <div className="row-span-2 text-center text-body space-y-2">
       <div className="text-main-cream">
         พื้นที่แห่งเวลาที่ถูกออกแบบมา
         <br /> ให้คุณ ‘ได้มองกลับไป’
@@ -41,6 +31,6 @@ export default function Page() {
         พบกันในนิทรรศการ
         <br /> COMMDE CREATIVE WALK 2025
       </div>
-    </motion.div>
+    </div>
   );
 }

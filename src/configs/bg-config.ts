@@ -23,6 +23,18 @@ export const backgroundMapConfig: Record<string, backgroundConfig> = {
     image: "/backgrounds/main-background.gif",
     imagesPreload: [],
   },
+  "web-opening-4": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-opening-5": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-opening-6": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
   "web-intro-1": {
     image: "/backgrounds/main-background.gif",
     imagesPreload: [],

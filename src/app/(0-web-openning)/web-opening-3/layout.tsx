@@ -15,7 +15,7 @@ const WebOpeningLayout = ({ children }: PropsWithChildren) => {
       </div>
       {children}
       <div className="row-start-4">
-        <NextButton />
+        <NextButton url="/web-opening-4" />
       </div>
     </>
   );
