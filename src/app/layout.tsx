@@ -22,9 +22,11 @@ export default function RootLayout({
     <html lang="th">
       <body
         style={{ fontFamily: "var(--font-pridi), sans-serif" }}
-        className={`${pridi.variable} antialiased relative mx-auto min-h-screen w-full max-w-md overflow-x-hidden overscroll-none`}
+        className={`${pridi.variable}`}
       >
-        <AnimatedLayout>{children}</AnimatedLayout>
+        <div className="antialiased relative mx-auto min-h-screen w-full max-w-md overflow-x-hidden overscroll-none`">
+          <AnimatedLayout>{children}</AnimatedLayout>
+        </div>
       </body>
     </html>
   );
