@@ -24,14 +24,13 @@ const AnimatedVideo = ({ src, preloadSrcs, ...props }: AnimatedImageProps) => {
   return (
     <>
       {attachPreload && (
-        <video className={cn(props.className, "-z-[100] hidden")}>
-          <source
-            src={src}
-            onLoad={() => {
-              setCurrentSrc(src);
-            }}
-            {...props}
-          />
+        <video
+          className={cn(props.className, "-z-[100] hidden")}
+          onLoadedData={() => {
+            setCurrentSrc(src);
+          }}
+        >
+          <source src={src} {...props} />
         </video>
       )}
       <AnimatePresence mode="popLayout">
