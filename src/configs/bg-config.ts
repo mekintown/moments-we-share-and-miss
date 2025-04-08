@@ -75,11 +75,12 @@ export const backgroundMapConfig: Record<string, backgroundConfig> = {
   "web-color-blue": {
     image: "/animations/transitions/color-blue.mp4",
     video: true,
-    redirectTo: "/web-color-7",
-    imagesPreload: ["/backgrounds/main-background.gif"],
+    redirectTo: "/web-color-green",
+    imagesPreload: [],
   },
   "web-color-green": {
-    image: "/backgrounds/main-background.gif",
+    image: "/animations/transitions/color-green.mp4",
+    video: true,
     imagesPreload: [],
   },
   "web-color-orange": {

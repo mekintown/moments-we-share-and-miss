@@ -1,11 +1,13 @@
 "use client";
 
 import { backgroundMapConfig } from "@/configs/bg-config";
+import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 interface AnimatedImageProps {
   src: string;
+  className?: string;
   preloadSrcs: (typeof backgroundMapConfig)[keyof typeof backgroundMapConfig]["imagesPreload"];
 }
 
@@ -22,7 +24,7 @@ const AnimatedVideo = ({ src, preloadSrcs, ...props }: AnimatedImageProps) => {
   return (
     <>
       {attachPreload && (
-        <video autoPlay>
+        <video className={cn(props.className, "-z-[100] hidden")}>
           <source
             src={src}
             onLoad={() => {
@@ -45,19 +47,15 @@ const AnimatedVideo = ({ src, preloadSrcs, ...props }: AnimatedImageProps) => {
             }, 1500);
           }}
         >
-          <video autoPlay>
-            <source src={currentSrc} {...props} />
+          <video autoPlay {...props} className="">
+            <source src={currentSrc} />
           </video>
         </motion.div>
       </AnimatePresence>
       {preloadSrcs?.map((source: string) => (
-        <video
-          autoPlay
-          key={`preload-${source}`}
-          src={source}
-          {...props}
-          className="hidden"
-        />
+        <video key={`preload-${source}`} {...props} className="hidden">
+          <source src={source} />
+        </video>
       ))}
     </>
   );

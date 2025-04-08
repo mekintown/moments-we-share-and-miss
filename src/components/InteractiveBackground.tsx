@@ -70,7 +70,11 @@ const InteractiveBackground = () => {
     <>
       {bgImgSrc &&
         (isVideo ? (
-          <AnimatedVideo src={bgImgSrc} preloadSrcs={imagePreloadSrc} />
+          <AnimatedVideo
+            src={bgImgSrc}
+            preloadSrcs={imagePreloadSrc}
+            className="relative -z-50 object-cover"
+          />
         ) : (
           <AnimatedImage
             src={bgImgSrc}
