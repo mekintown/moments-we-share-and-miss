@@ -32,7 +32,6 @@ const AnimatedVideo = ({ src, preloadSrcs, ...props }: AnimatedImageProps) => {
             }}
             {...props}
           />
-          Your browser does not support the video tag.
         </video>
       )}
       <AnimatePresence mode="popLayout">
@@ -47,7 +46,13 @@ const AnimatedVideo = ({ src, preloadSrcs, ...props }: AnimatedImageProps) => {
             }, 1500);
           }}
         >
-          <video autoPlay {...props} className="">
+          <video
+            muted
+            playsInline
+            autoPlay
+            {...props}
+            className="absolute w-full h-full inset-0"
+          >
             <source src={currentSrc} />
           </video>
         </motion.div>
