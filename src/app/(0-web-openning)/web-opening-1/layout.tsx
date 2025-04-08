@@ -9,11 +9,11 @@ const WebOpeningLayout = ({ children }: PropsWithChildren) => {
         <Image
           src="/logo/logo-full.svg"
           alt="logo-full"
-          width={150}
-          height={150}
+          width={126}
+          height={78}
         />
       </div>
-      {children}
+      <div className="row-start-2">{children}</div>
       <div className="row-start-4">
         <NextButton url="/web-opening-2" />
       </div>
