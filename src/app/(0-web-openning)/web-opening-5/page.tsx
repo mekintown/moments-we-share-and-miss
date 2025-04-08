@@ -6,12 +6,15 @@ export default function Page() {
   return (
     <div className="row-span-2 text-center text-body space-y-5">
       <div className="text-subheader text-main-cream">
-        ก่อนย้อนความทรงจำไปด้วยกัน ขอทำความรู้จักกันสักนิด
-        <br />
-        อยากให้เราเรียกคุณว่าอะไร?
+        <div className="">ก่อนย้อนความทรงจำไปด้วยกัน</div>
+        <div className="">ขอทำความรู้จักกันสักนิด</div>
+        <div className="">อยากให้เราเรียกคุณว่าอะไร?</div>
       </div>
       <div className="">
-        <Input className="text-body text-main-cream" />
+        <Input
+          type="email"
+          className="text-main-cream border-2 border-main-cream"
+        />
       </div>
     </div>
   );
