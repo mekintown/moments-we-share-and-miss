@@ -13,9 +13,9 @@ const WebOpeningLayout = ({ children }: PropsWithChildren) => {
           height={78}
         />
       </div>
-      <div className="row-start-2">{children}</div>
+      <div className="row-start-2 row-span-2">{children}</div>
       <div className="row-start-4">
-        <NextButton url="/web-opening-3" />
+        <NextButton url="/web-opening-4" />
       </div>
     </>
   );
