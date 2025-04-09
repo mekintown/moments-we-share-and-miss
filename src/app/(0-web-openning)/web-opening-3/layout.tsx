@@ -1,6 +1,7 @@
 import { PropsWithChildren } from "react";
 import Image from "next/image";
 import NextButton from "@/components/NextButton";
+import Link from "next/link";
 
 const WebOpeningLayout = ({ children }: PropsWithChildren) => {
   return (
@@ -15,7 +16,7 @@ const WebOpeningLayout = ({ children }: PropsWithChildren) => {
       </div>
       {children}
       <div className="row-start-4">
-        <NextButton url="/web-opening-4" />
+        <NextButton url="web-opening-2" label="ย้อนกลับ" />
       </div>
     </>
   );

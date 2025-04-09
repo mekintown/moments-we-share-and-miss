@@ -1,7 +1,15 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 export default function Page() {
-  const name = "PLACEHOLDER";
+  const [name, setName] = useState<string | null>(null);
+
+  useEffect(() => {
+    const savedColor = localStorage.getItem("name");
+    setName(savedColor);
+  }, []);
+
   return (
     <div className="text-center text-subheader space-y-2 ">
       <div className="text-main-cream ">

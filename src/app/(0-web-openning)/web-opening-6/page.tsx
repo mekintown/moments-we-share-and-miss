@@ -9,22 +9,33 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useEffect, useState } from "react";
 
 export default function Page() {
+  const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
+  useEffect(() => {
+    localStorage.setItem("age", age);
+    localStorage.setItem("gender", gender);
+  }, [age, gender]);
+
   return (
     <div className="row-span-2 text-center text-body space-y-5">
       <div className="text-subheader text-main-cream">อายุ</div>
       <div className="">
         <Input
-          type="email"
+          type="input"
           className="text-main-cream border-2 border-main-cream"
+          onChange={(e) => {
+            setAge(e.target.value);
+          }}
         />
       </div>
       <div className="text-subheader text-main-cream">เพศ</div>
       <div className="">
-        <Select>
-          <SelectTrigger className="border-2 border-main-cream">
-            <SelectValue placeholder="เลือกตัวเลือก" />
+        <Select onValueChange={(value) => setGender(value)}>
+          <SelectTrigger className="border-2 border-main-cream text-main-cream">
+            <SelectValue placeholder="" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>

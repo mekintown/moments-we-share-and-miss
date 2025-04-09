@@ -116,4 +116,35 @@ export const backgroundMapConfig: Record<string, backgroundConfig> = {
     video: true,
     redirectTo: "/web-sound-1",
   },
+  "web-sound-1": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-sound-2": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-sound-3": {
+    image: "/backgrounds/main-background.gif",
+    redirectTo: "/web-sound-4",
+    imagesPreload: [],
+  },
+  "web-sound-4": {
+    image: "/backgrounds/main-background.gif",
+    redirectTo: "/web-sound-5",
+    imagesPreload: [],
+  },
+  "web-sound-5": {
+    image: "/backgrounds/main-background.gif",
+    redirectTo: "/web-sound-6",
+    imagesPreload: [],
+  },
+  "web-sound-6": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-sound-7": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
 } as const;

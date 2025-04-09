@@ -1,5 +1,7 @@
 "use client";
+import NextButton from "@/components/NextButton";
 import { Separator } from "@/components/ui/separator";
+import { motion } from "framer-motion";
 
 export default function Page() {
   return (
@@ -15,6 +17,24 @@ export default function Page() {
         <div className="">มีเรื่องไหนที่เรายังจำได้อยู่เสมอบ้างนะ…</div>
       </div>
       <Separator className="bg-main-yellow" />
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="text-main-cream z-10"
+      >
+        <div className="">'Within That Moment'</div>
+        <div className="">เป็นส่วนหนึ่งของการศึกษาปริญญานิพนธ์</div>
+        <div className="">คณะสถาปัตยกรรมศาสตร์</div>
+        <div className="">สาขาการออกแบบนิเทศศิลป์ จุฬาลงกรณ์มหาวิทยาลัย</div>
+        <NextButton
+          variant="link"
+          label="เกี่ยวกับโปรเจกต์"
+          url="/web-opening-3"
+          className="!text-body"
+        />
+      </motion.div>
     </div>
   );
 }
