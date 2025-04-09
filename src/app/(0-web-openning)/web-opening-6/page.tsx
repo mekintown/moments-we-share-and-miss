@@ -26,7 +26,7 @@ export default function Page() {
           <SelectTrigger className="border-2 border-main-cream">
             <SelectValue placeholder="เลือกตัวเลือก" />
           </SelectTrigger>
-          <SelectContent className="text-body ">
+          <SelectContent>
             <SelectGroup>
               <SelectItem value="male">ชาย</SelectItem>
               <SelectItem value="female">หญิง</SelectItem>

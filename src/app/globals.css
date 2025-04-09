@@ -6,6 +6,13 @@
 @theme inline {
   --color-main-yellow: var(--main-yellow);
   --color-main-cream: var(--main-cream);
+  --color-sub-green: rgb(135, 136, 47);
+  --color-sub-blue: rgb(165, 206, 214);
+  --color-sub-yellow: rgb(225, 232, 163);
+  --color-sub-purple: rgb(219, 179, 227);
+  --color-sub-pink: rgb(224, 162, 180);
+  --color-sub-orange: rgb(227, 92, 36);
+  --color-sub-red: rgb(194, 40, 48);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-sidebar-ring: var(--sidebar-ring);
