@@ -5,13 +5,19 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-interface AnimatedImageProps {
+interface AnimatedVideoProps {
   src: string;
+  onEnd: () => void;
   className?: string;
   preloadSrcs: (typeof backgroundMapConfig)[keyof typeof backgroundMapConfig]["imagesPreload"];
 }
 
-const AnimatedVideo = ({ src, preloadSrcs, ...props }: AnimatedImageProps) => {
+const AnimatedVideo = ({
+  src,
+  onEnd,
+  preloadSrcs,
+  ...props
+}: AnimatedVideoProps) => {
   const [currentSrc, setCurrentSrc] = useState(src);
   const [attachPreload, setAttachPreload] = useState(false);
 
@@ -51,13 +57,21 @@ const AnimatedVideo = ({ src, preloadSrcs, ...props }: AnimatedImageProps) => {
             autoPlay
             {...props}
             className="absolute w-full h-full inset-0"
+            onEnded={() => {
+              onEnd();
+            }}
           >
             <source src={currentSrc} />
           </video>
         </motion.div>
       </AnimatePresence>
       {preloadSrcs?.map((source: string) => (
-        <video key={`preload-${source}`} {...props} className="hidden">
+        <video
+          key={`preload-${source}`}
+          preload={source}
+          {...props}
+          className="hidden"
+        >
           <source src={source} />
         </video>
       ))}
