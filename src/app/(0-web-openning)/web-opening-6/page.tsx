@@ -34,14 +34,29 @@ export default function Page() {
       <div className="text-subheader text-main-cream">เพศ</div>
       <div className="">
         <Select onValueChange={(value) => setGender(value)}>
-          <SelectTrigger className="border-2 border-main-cream">
-            <SelectValue placeholder="เลือกตัวเลือก" />
+          <SelectTrigger className="border-2 border-main-cream text-main-cream">
+            <SelectValue placeholder="" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectItem value="male">ชาย</SelectItem>
-              <SelectItem value="female">หญิง</SelectItem>
-              <SelectItem value="others">ไม่ระบุ</SelectItem>
+              <SelectItem
+                value="male"
+                className="text-main-cream text-subheader"
+              >
+                ชาย
+              </SelectItem>
+              <SelectItem
+                value="female"
+                className="text-main-cream text-subheader"
+              >
+                หญิง
+              </SelectItem>
+              <SelectItem
+                value="others"
+                className="text-main-cream text-subheader"
+              >
+                ไม่ระบุ
+              </SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
