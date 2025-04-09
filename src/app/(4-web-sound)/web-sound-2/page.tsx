@@ -11,7 +11,7 @@ export default function Page() {
         </div>
         <div className="text-main-cream">ในเหตุการณ์สำคัญของเรา</div>
       </div>
-      <NextButton url="/web-color-5" label="แตะเพื่อไปต่อ" />
+      <NextButton url="/web-sound-3" label="แตะเพื่อไปต่อ" />
     </div>
   );
 }

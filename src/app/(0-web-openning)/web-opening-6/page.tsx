@@ -24,7 +24,7 @@ export default function Page() {
       <div className="text-subheader text-main-cream">อายุ</div>
       <div className="">
         <Input
-          type="email"
+          type="input"
           className="text-main-cream border-2 border-main-cream"
           onChange={(e) => {
             setAge(e.target.value);
@@ -39,24 +39,9 @@ export default function Page() {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectItem
-                value="male"
-                className="text-main-cream text-subheader"
-              >
-                ชาย
-              </SelectItem>
-              <SelectItem
-                value="female"
-                className="text-main-cream text-subheader"
-              >
-                หญิง
-              </SelectItem>
-              <SelectItem
-                value="others"
-                className="text-main-cream text-subheader"
-              >
-                ไม่ระบุ
-              </SelectItem>
+              <SelectItem value="male">ชาย</SelectItem>
+              <SelectItem value="female">หญิง</SelectItem>
+              <SelectItem value="others">ไม่ระบุ</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>

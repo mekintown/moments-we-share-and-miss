@@ -10,7 +10,7 @@ export default function Page() {
         <div className="text-main-cream">ไม่ได้มีแค่ภาพที่พาเรากลับไป</div>
         <div className="text-main-cream">ในห้วงเวลานั้น</div>
       </div>
-      <NextButton url="/web-color-5" label="แตะเพื่อไปต่อ" />
+      <NextButton url="/web-sound-2" label="แตะเพื่อไปต่อ" />
     </div>
   );
 }

@@ -9,7 +9,6 @@ export default function Page() {
         <div className="text-main-cream">อาจเป็นเสียงโวยวายของคุณยาย</div>
         <div className="text-main-cream">เมื่อเราลืมเก็บผ้าในวันที่ฝนตก</div>
       </div>
-      <NextButton url="/web-color-5" label="แตะเพื่อไปต่อ" />
     </div>
   );
 }
