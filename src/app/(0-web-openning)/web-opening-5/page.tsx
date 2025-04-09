@@ -1,8 +1,14 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
+import { useEffect, useState } from "react";
 
 export default function Page() {
+  const [name, setName] = useState("");
+  useEffect(() => {
+    localStorage.setItem("name", name);
+  }, [name]);
+
   return (
     <div className="row-span-2 text-center text-body space-y-5">
       <div className="text-subheader text-main-cream">
@@ -14,6 +20,9 @@ export default function Page() {
         <Input
           type="email"
           className="text-main-cream border-2 border-main-cream"
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
         />
       </div>
     </div>

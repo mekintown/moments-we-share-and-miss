@@ -8,7 +8,7 @@ const WebOpeningLayout = ({ children }: PropsWithChildren) => {
       <div className="row-start-1"></div>
       <div className="row-start-2">{children}</div>
       <div className="row-start-4">
-        <NextButton url="/web-opening-6" />
+        <NextButton url="/web-intro-1" />
       </div>
     </>
   );

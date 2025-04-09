@@ -2,7 +2,6 @@
 import NextButton from "@/components/NextButton";
 import { Separator } from "@/components/ui/separator";
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 export default function Page() {
   return (
