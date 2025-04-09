@@ -5,10 +5,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Page() {
-  const name = "PLACEHOLDER";
+  const [name, setName] = useState<string | null>("");
   const [color, setColor] = useState("");
   useEffect(() => {
     localStorage.setItem("color", color ?? "");
+    setName(localStorage.getItem("name"));
   }, [color]);
   return (
     <div className="text-center text-subheader space-y-4">
