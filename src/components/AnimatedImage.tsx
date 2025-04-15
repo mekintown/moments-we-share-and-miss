@@ -2,7 +2,6 @@
 
 import { backgroundMapConfig } from "@/configs/bg-config";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image, { ImageProps } from "next/image";
 import { useEffect, useState } from "react";
@@ -25,7 +24,7 @@ const AnimatedImage = ({
     if (src !== currentSrc) {
       setAttachPreload(true);
     }
-  }, [currentSrc, src]);
+  }, [src, currentSrc]);
 
   return (
     <>
@@ -33,38 +32,29 @@ const AnimatedImage = ({
         <Image
           src={src}
           alt={`attached-preload-${alt}`}
-          priority={true}
+          priority
           onLoad={() => {
             setCurrentSrc(src);
+            setAttachPreload(false);
           }}
           {...props}
-          className={cn(props.className, "-z-[100]")}
+          className={cn(props.className, "hidden")}
         />
       )}
-      <AnimatePresence mode="popLayout">
-        <motion.div
-          key={currentSrc}
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          onAnimationComplete={() => {
-            setTimeout(() => {
-              setAttachPreload(false);
-            }, 1500);
-          }}
-        >
-          <Image src={currentSrc} alt={alt} {...props} />
-        </motion.div>
-      </AnimatePresence>
+
+      {/* Main image shows "currentSrc" so no flash */}
+      <Image src={currentSrc} alt={alt} {...props} />
+
+      {/* Preload any additional images */}
       {preloadSrcs?.map((source: string | StaticImport) => (
         <Image
           key={`preload-${source}`}
           src={source}
           alt={`preload-${alt}`}
           loading="eager"
-          priority={true}
-          {...props}
+          priority
           className="hidden"
+          {...props}
         />
       ))}
     </>

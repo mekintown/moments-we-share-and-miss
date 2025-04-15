@@ -2,16 +2,25 @@
 
 import { backgroundMapConfig } from "@/configs/bg-config";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import AnimatedImage from "./AnimatedImage";
+import { AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
-import AnimatedVideo from "./AnimatedVideo";
+import BackgroundLayer from "./BackgroundLayer";
+
+interface LayerInfo {
+  key: string;
+  isVideo: boolean;
+  src: string;
+  preloadSrcs?: string[];
+  onVideoEnd?: () => void;
+}
 
 const InteractiveBackground = () => {
   const path = usePathname();
   const router = useRouter();
   const page = path.split("/")[1] as keyof typeof backgroundMapConfig;
-  const [bgImgSrc, setBgImgSrc] = useState<string | undefined>();
-  const [isVideo, setIsVideo] = useState(false);
+
+  const [prevBg, setPrevBg] = useState<LayerInfo | null>(null);
+  const [activeBg, setActiveBg] = useState<LayerInfo | null>(null);
 
   const config = backgroundMapConfig[page];
 
@@ -21,40 +30,6 @@ const InteractiveBackground = () => {
     }
   }, [config, router]);
 
-  useEffect(() => {
-    if (!config) {
-      return;
-    }
-
-    // Check if video
-    if (config.video) {
-      setIsVideo(true);
-      if (!Array.isArray(config.image)) {
-        setBgImgSrc(config.image);
-      }
-    } else {
-      // Handle stop-motion animation
-      if (Array.isArray(config.image)) {
-        animateSequence(config.image, config.stopMotionDuration || 2000, () => {
-          if (config.redirectTo) {
-            router.push(config.redirectTo);
-          }
-        });
-      }
-      // Handle static backgrounds with redirect
-      else if (config.redirectTo) {
-        setBgImgSrc(config.image);
-        setTimeout(() => {
-          router.push(config.redirectTo as string);
-        }, config.stopMotionDuration || 2500);
-      }
-      // Handle static backgrounds without redirects
-      else {
-        setBgImgSrc(config.image);
-      }
-    }
-  }, [page, router]);
-
   const animateSequence = (
     images: string[],
     duration: number,
@@ -62,7 +37,14 @@ const InteractiveBackground = () => {
   ) => {
     images.forEach((image, index) => {
       setTimeout(() => {
-        setBgImgSrc(image);
+        // Each new frame => fade from old activeBg to new activeBg
+        setPrevBg((old) => (old === null ? null : { ...old }));
+        setActiveBg((oldActive) => ({
+          key: `image-sequence-${page}-${index}-${Date.now()}`,
+          isVideo: false,
+          src: image,
+          preloadSrcs: config?.imagesPreload,
+        }));
         if (index === images.length - 1 && callback) {
           setTimeout(callback, duration / 2);
         }
@@ -70,32 +52,84 @@ const InteractiveBackground = () => {
     });
   };
 
-  const imagePreloadSrc = useMemo(
-    () => backgroundMapConfig[page]?.imagesPreload,
-    [page]
-  );
+  useEffect(() => {
+    if (!config) return;
+
+    setPrevBg(activeBg || null);
+
+    if (config.video) {
+      // if it’s a video
+      setActiveBg({
+        key: `video-${page}-${Date.now()}`,
+        isVideo: true,
+        src: !Array.isArray(config.image) ? config.image : "",
+        preloadSrcs: config.imagesPreload,
+        onVideoEnd: handleVideoEnd,
+      });
+    } else {
+      // If not video => possibly stop-motion
+      if (Array.isArray(config.image)) {
+        setActiveBg({
+          key: `image-seq-${page}-${Date.now()}`,
+          isVideo: false,
+          src: config.image[0],
+          preloadSrcs: config.imagesPreload,
+        });
+        animateSequence(config.image, config.stopMotionDuration || 2000, () => {
+          if (config.redirectTo) {
+            router.push(config.redirectTo);
+          }
+        });
+      } else if (config.redirectTo) {
+        // Single static image + redirect
+        setActiveBg({
+          key: `image-redirect-${page}-${Date.now()}`,
+          isVideo: false,
+          src: config.image,
+          preloadSrcs: config.imagesPreload,
+        });
+        setTimeout(() => {
+          router.push(config.redirectTo as string);
+        }, config.stopMotionDuration || 2500);
+      } else {
+        // Plain static
+        setActiveBg({
+          key: `image-${page}-${Date.now()}`,
+          isVideo: false,
+          src: config.image,
+          preloadSrcs: config.imagesPreload,
+        });
+      }
+    }
+  }, [page, config]);
+
+  useEffect(() => {
+    if (prevBg && activeBg && prevBg.key === activeBg.key) {
+      setPrevBg(null);
+    }
+  }, [prevBg, activeBg]);
 
   return (
-    <>
-      {bgImgSrc &&
-        (isVideo ? (
-          <AnimatedVideo
-            src={bgImgSrc}
-            preloadSrcs={imagePreloadSrc}
-            className="relative -z-50 object-cover"
-            onEnd={handleVideoEnd}
-          />
-        ) : (
-          <AnimatedImage
-            src={bgImgSrc}
-            preloadSrcs={imagePreloadSrc}
-            alt="background-image"
-            loading="eager"
-            fill
-            className="relative -z-50 object-cover"
-          />
-        ))}
-    </>
+    <AnimatePresence onExitComplete={() => setPrevBg(null)}>
+      {prevBg && (
+        <BackgroundLayer
+          key={prevBg.key}
+          isVideo={prevBg.isVideo}
+          src={prevBg.src}
+          preloadSrcs={prevBg.preloadSrcs}
+          onVideoEnd={prevBg.onVideoEnd}
+        />
+      )}
+      {activeBg && (
+        <BackgroundLayer
+          key={activeBg.key}
+          isVideo={activeBg.isVideo}
+          src={activeBg.src}
+          preloadSrcs={activeBg.preloadSrcs}
+          onVideoEnd={activeBg.onVideoEnd}
+        />
+      )}
+    </AnimatePresence>
   );
 };
 
