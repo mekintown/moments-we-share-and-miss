@@ -20,7 +20,6 @@ const AnimatedVideo = ({
   const [currentSrc, setCurrentSrc] = useState(src);
   const [attachPreload, setAttachPreload] = useState(false);
 
-  // If src changes, preload the new video hidden
   useEffect(() => {
     if (src !== currentSrc) {
       setAttachPreload(true);
@@ -41,7 +40,6 @@ const AnimatedVideo = ({
         </video>
       )}
 
-      {/* Main video uses currentSrc so we only switch once new is preloaded */}
       <video
         muted
         playsInline
@@ -53,7 +51,6 @@ const AnimatedVideo = ({
         <source src={currentSrc} />
       </video>
 
-      {/* Preload any additional sources */}
       {preloadSrcs?.map((source: string) => (
         <video key={`preload-${source}`} preload="auto" className="hidden">
           <source src={source} />
