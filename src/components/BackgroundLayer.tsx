@@ -19,12 +19,7 @@ const BackgroundLayer = ({
 }: BackgroundLayerProps) => {
   return (
     <motion.div
-      style={{
-        position: "absolute",
-        inset: 0,
-        zIndex: -50,
-        overflow: "hidden",
-      }}
+      className="absolute inset-0 -z-50 overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

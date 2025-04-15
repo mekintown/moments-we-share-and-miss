@@ -53,8 +53,8 @@ const AnimatedImage = ({
           alt={`preload-${alt}`}
           loading="eager"
           priority
-          className="hidden"
           {...props}
+          className="hidden"
         />
       ))}
     </>

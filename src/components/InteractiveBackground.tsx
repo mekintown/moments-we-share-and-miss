@@ -109,8 +109,12 @@ const InteractiveBackground = () => {
     }
   }, [prevBg, activeBg]);
 
+  function handleExitComplete() {
+    setPrevBg(null);
+  }
+
   return (
-    <AnimatePresence onExitComplete={() => setPrevBg(null)}>
+    <AnimatePresence onExitComplete={handleExitComplete}>
       {prevBg && (
         <BackgroundLayer
           key={prevBg.key}
