@@ -1,13 +1,13 @@
-interface backgroundConfig {
-  image: string | string[];
+interface BackgroundConfig {
+  image: string;
+  stopMotionImages?: string[];
   video?: boolean;
   imagesPreload?: string[];
   stopMotionDuration?: number;
   redirectTo?: string;
-  useBackgroundState?: boolean;
 }
 
-export const backgroundMapConfig: Record<string, backgroundConfig> = {
+export const backgroundMapConfig: Record<string, BackgroundConfig> = {
   "": {
     image: "/backgrounds/home-background.gif",
     imagesPreload: ["/backgrounds/main-background.gif"],

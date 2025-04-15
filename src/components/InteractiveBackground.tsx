@@ -24,82 +24,19 @@ const InteractiveBackground = () => {
 
   const config = backgroundMapConfig[page];
 
-  const handleVideoEnd = useCallback(() => {
-    if (config?.redirectTo) {
-      router.push(config.redirectTo);
-    }
-  }, [config, router]);
-
-  const animateSequence = (
-    images: string[],
-    duration: number,
-    callback?: () => void
-  ) => {
-    images.forEach((image, index) => {
-      setTimeout(() => {
-        // Each new frame => fade from old activeBg to new activeBg
-        setPrevBg((old) => (old === null ? null : { ...old }));
-        setActiveBg((oldActive) => ({
-          key: `image-sequence-${page}-${index}-${Date.now()}`,
-          isVideo: false,
-          src: image,
-          preloadSrcs: config?.imagesPreload,
-        }));
-        if (index === images.length - 1 && callback) {
-          setTimeout(callback, duration / 2);
-        }
-      }, index * duration);
-    });
-  };
-
   useEffect(() => {
     if (!config) return;
 
     setPrevBg(activeBg || null);
 
     if (config.video) {
-      // if it’s a video
-      setActiveBg({
-        key: `video-${page}-${Date.now()}`,
-        isVideo: true,
-        src: !Array.isArray(config.image) ? config.image : "",
-        preloadSrcs: config.imagesPreload,
-        onVideoEnd: handleVideoEnd,
-      });
+      setVideoBackground();
+    } else if (config.stopMotionImages) {
+      setStopMotionBackground();
+    } else if (config.redirectTo) {
+      setStaticImageWithRedirect();
     } else {
-      // If not video => possibly stop-motion
-      if (Array.isArray(config.image)) {
-        setActiveBg({
-          key: `image-seq-${page}-${Date.now()}`,
-          isVideo: false,
-          src: config.image[0],
-          preloadSrcs: config.imagesPreload,
-        });
-        animateSequence(config.image, config.stopMotionDuration || 2000, () => {
-          if (config.redirectTo) {
-            router.push(config.redirectTo);
-          }
-        });
-      } else if (config.redirectTo) {
-        // Single static image + redirect
-        setActiveBg({
-          key: `image-redirect-${page}-${Date.now()}`,
-          isVideo: false,
-          src: config.image,
-          preloadSrcs: config.imagesPreload,
-        });
-        setTimeout(() => {
-          router.push(config.redirectTo as string);
-        }, config.stopMotionDuration || 2500);
-      } else {
-        // Plain static
-        setActiveBg({
-          key: `image-${page}-${Date.now()}`,
-          isVideo: false,
-          src: config.image,
-          preloadSrcs: config.imagesPreload,
-        });
-      }
+      setStaticImage();
     }
   }, [page, config]);
 
@@ -109,9 +46,82 @@ const InteractiveBackground = () => {
     }
   }, [prevBg, activeBg]);
 
-  function handleExitComplete() {
+  const setVideoBackground = () => {
+    setActiveBg({
+      key: `video-${page}-${Date.now()}`,
+      isVideo: true,
+      src: !Array.isArray(config.image) ? config.image : "",
+      preloadSrcs: config.imagesPreload,
+      onVideoEnd: handleVideoEnd,
+    });
+  };
+
+  const setStopMotionBackground = () => {
+    const images = config.stopMotionImages!;
+    setActiveBg({
+      key: `image-seq-${page}-${Date.now()}`,
+      isVideo: false,
+      src: config.image[0],
+      preloadSrcs: config.imagesPreload,
+    });
+    runImageSequence(images, config.stopMotionDuration || 2000, () => {
+      if (config.redirectTo) {
+        router.push(config.redirectTo);
+      }
+    });
+  };
+
+  const setStaticImageWithRedirect = () => {
+    setActiveBg({
+      key: `image-redirect-${page}-${Date.now()}`,
+      isVideo: false,
+      src: config.image,
+      preloadSrcs: config.imagesPreload,
+    });
+    setTimeout(() => {
+      router.push(config.redirectTo as string);
+    }, config.stopMotionDuration || 2500);
+  };
+
+  const setStaticImage = () => {
+    setActiveBg({
+      key: `image-${page}-${Date.now()}`,
+      isVideo: false,
+      src: config.image,
+      preloadSrcs: config.imagesPreload,
+    });
+  };
+
+  const handleExitComplete = () => {
     setPrevBg(null);
-  }
+  };
+
+  const handleVideoEnd = useCallback(() => {
+    if (config?.redirectTo) {
+      router.push(config.redirectTo);
+    }
+  }, [config, router]);
+
+  const runImageSequence = (
+    images: string[],
+    duration: number,
+    callback?: () => void
+  ) => {
+    images.forEach((image, index) => {
+      setTimeout(() => {
+        setPrevBg((old) => (old === null ? null : { ...old }));
+        setActiveBg({
+          key: `image-sequence-${page}-${index}-${Date.now()}`,
+          isVideo: false,
+          src: image,
+          preloadSrcs: config?.imagesPreload,
+        });
+        if (index === images.length - 1 && callback) {
+          setTimeout(callback, duration / 2);
+        }
+      }, index * duration);
+    });
+  };
 
   return (
     <AnimatePresence onExitComplete={handleExitComplete}>
