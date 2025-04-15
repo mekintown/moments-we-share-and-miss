@@ -42,10 +42,8 @@ const AnimatedImage = ({
         />
       )}
 
-      {/* Main image shows "currentSrc" so no flash */}
       <Image src={currentSrc} alt={alt} {...props} />
 
-      {/* Preload any additional images */}
       {preloadSrcs?.map((source: string | StaticImport) => (
         <Image
           key={`preload-${source}`}
