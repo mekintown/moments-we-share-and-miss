@@ -2,12 +2,11 @@
 
 import { backgroundMapConfig } from "@/configs/bg-config";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 interface AnimatedVideoProps {
   src: string;
-  onEnd: () => void;
+  onEnd?: () => void;
   className?: string;
   preloadSrcs: (typeof backgroundMapConfig)[keyof typeof backgroundMapConfig]["imagesPreload"];
 }
@@ -25,53 +24,35 @@ const AnimatedVideo = ({
     if (src !== currentSrc) {
       setAttachPreload(true);
     }
-  }, [currentSrc, src]);
+  }, [src, currentSrc]);
 
   return (
     <>
       {attachPreload && (
         <video
-          className={cn(props.className, "-z-[100] hidden")}
+          className={cn(props.className, "hidden")}
           onLoadedData={() => {
             setCurrentSrc(src);
+            setAttachPreload(false);
           }}
         >
-          <source src={src} {...props} />
+          <source src={src} />
         </video>
       )}
-      <AnimatePresence mode="popLayout">
-        <motion.div
-          key={currentSrc}
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          onAnimationComplete={() => {
-            setTimeout(() => {
-              setAttachPreload(false);
-            }, 1500);
-          }}
-        >
-          <video
-            muted
-            playsInline
-            autoPlay
-            {...props}
-            className="absolute w-full h-full inset-0"
-            onEnded={() => {
-              onEnd();
-            }}
-          >
-            <source src={currentSrc} />
-          </video>
-        </motion.div>
-      </AnimatePresence>
+
+      <video
+        muted
+        playsInline
+        autoPlay
+        onEnded={onEnd}
+        className={cn(props.className, "absolute inset-0")}
+        {...props}
+      >
+        <source src={currentSrc} />
+      </video>
+
       {preloadSrcs?.map((source: string) => (
-        <video
-          key={`preload-${source}`}
-          preload={source}
-          {...props}
-          className="hidden"
-        >
+        <video key={`preload-${source}`} preload="auto" className="hidden">
           <source src={source} />
         </video>
       ))}
