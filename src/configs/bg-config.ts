@@ -246,4 +246,46 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
     image: "/backgrounds/main-background.gif",
     imagesPreload: [],
   },
+  "web-transition-1": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-transition-2": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-transition-3": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-transition-4": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-transition-5": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-transition-6": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-transition-7": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-transition-8": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: ["/logo/logo-sub.svg"],
+  },
+  "web-transition-momentswemiss": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+    redirectTo: "web-transition-9",
+  },
+  "web-transition-9": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+    redirectTo: "web-reveal-1",
+  },
 } as const;
