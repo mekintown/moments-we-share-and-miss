@@ -20,7 +20,7 @@ const childSlugMap: Record<string, string> = {
 };
 
 const locationSlugMap: Record<string, string> = {
-  บ้าน: "house",
+  บ้าน: "home",
   รถ: "car",
   ทะเล: "beach",
   โรงเรียน: "school",
