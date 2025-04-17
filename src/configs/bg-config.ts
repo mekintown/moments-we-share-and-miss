@@ -217,25 +217,29 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
   },
   "web-sound-2": {
     image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    imagesPreload: ["/animations/transitions/sound/sound3.mp4"],
   },
   "web-sound-3": {
-    image: "/backgrounds/main-background.gif",
+    image: "/animations/transitions/sound/sound3.mp4",
+    video: true,
     redirectTo: "/web-sound-4",
-    imagesPreload: [],
+    imagesPreload: ["/animations/transitions/sound/sound4.mp4"],
   },
   "web-sound-4": {
-    image: "/backgrounds/main-background.gif",
+    image: "/animations/transitions/sound/sound4.mp4",
+    video: true,
     redirectTo: "/web-sound-5",
-    imagesPreload: [],
+    imagesPreload: ["/animations/transitions/sound/sound5.mp4"],
   },
   "web-sound-5": {
-    image: "/backgrounds/main-background.gif",
+    image: "/animations/transitions/sound/sound5.mp4",
+    video: true,
     redirectTo: "/web-sound-6",
-    imagesPreload: [],
+    imagesPreload: ["/animations/transitions/sound/sound6.mp4"],
   },
   "web-sound-6": {
-    image: "/backgrounds/main-background.gif",
+    image: "/animations/transitions/sound/sound6.mp4",
+    video: true,
     imagesPreload: [],
   },
   "web-sound-7": {

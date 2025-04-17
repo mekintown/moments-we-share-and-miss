@@ -4,20 +4,20 @@ import { TextAreaWithCounter } from "@/components/TextAreaWithCounter";
 import { useEffect, useState } from "react";
 
 export default function Page() {
-  const [reason, setReason] = useState("");
+  const [answerColor, setAnswerColor] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("reason", reason);
-  }, [reason]);
+    localStorage.setItem("answerColor", answerColor);
+  }, [answerColor]);
   return (
     <>
       <div className="h-full text-main-cream text-center text-subheader space-y-3">
         <div className="">เพราะ</div>
         <TextAreaWithCounter
           onChange={(e) => {
-            setReason(e.target.value);
+            setAnswerColor(e.target.value);
           }}
-          value={reason}
+          value={answerColor}
           maxCount={100}
           className="h-full"
         />

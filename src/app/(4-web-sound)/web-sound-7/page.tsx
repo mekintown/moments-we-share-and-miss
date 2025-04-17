@@ -1,32 +1,44 @@
 "use client";
 
+import NextButton from "@/components/NextButton";
 import { TextAreaWithCounter } from "@/components/TextAreaWithCounter";
 import { useEffect, useState } from "react";
 
-export default function Page() {
-  const [sound, setSound] = useState("");
+const Page = () => {
+  const [answerSound, setAnswerSound] = useState("");
   const [name, setName] = useState<string | null>("");
   useEffect(() => {
-    localStorage.setItem("sound", sound);
+    localStorage.setItem("answerSound", answerSound);
     setName(localStorage.getItem("name"));
-  }, [sound]);
+  }, [answerSound]);
+
   return (
     <>
-      <div className="h-full  space-y-3">
-        <div className="text-main-cream text-center text-subheader">
+      <div className="w-full h-full row-start-2 row-span-2">
+        <div className="h-full text-main-cream text-center text-subheader">
           <div className="">แล้วสำหรับเรื่องราวที่เล่าให้เราฟัง</div>
           <div className="">เสียงแบบไหนที่ดังก้องอยู่ใน</div>
           <div className="">ความทรงจำของ {name}</div>
+          <div className="h-full py-3">
+            <TextAreaWithCounter
+              onChange={(e) => {
+                setAnswerSound(e.target.value);
+              }}
+              value={answerSound}
+              maxCount={120}
+              className="h-8/10"
+            />
+          </div>
         </div>
-        <TextAreaWithCounter
-          onChange={(e) => {
-            setSound(e.target.value);
-          }}
-          value={sound}
-          maxCount={100}
-          className="h-3/4 text-main-cream"
+      </div>
+      <div className="row-start-4">
+        <NextButton
+          url={`/web-color-1`}
+          label="ต่อไป"
+          disabled={answerSound === ""}
         />
       </div>
     </>
   );
-}
+};
+export default Page;
