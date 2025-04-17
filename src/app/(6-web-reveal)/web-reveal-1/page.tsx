@@ -38,7 +38,7 @@ const Page = () => {
     const savedLocation = localStorage.getItem("location");
     const savedWho = localStorage.getItem("who");
     const savedWhom = localStorage.getItem("whom");
-    const savedWhy = localStorage.getItem("why");
+    const savedWhy = localStorage.getItem("web_answer_why");
 
     if (savedLocation) setLocation(savedLocation);
     if (savedWho) setWho(savedWho);
