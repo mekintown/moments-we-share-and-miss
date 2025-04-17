@@ -134,18 +134,18 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
     imagesPreload: [],
   },
   "web-color-2": {
-    image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    image: "/animations/transitions/colors/color2.mp4",
+    video: true,
     redirectTo: "web-color-3",
   },
   "web-color-3": {
-    image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    image: "/animations/transitions/colors/color3.mp4",
+    video: true,
     redirectTo: "web-color-4",
   },
   "web-color-4": {
-    image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    image: "/animations/transitions/colors/color4.mp4",
+    video: true,
   },
   "web-color-5": {
     image: "/backgrounds/main-background.gif",

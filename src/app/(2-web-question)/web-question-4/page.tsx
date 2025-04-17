@@ -32,7 +32,7 @@ const Page = () => {
               <SelectGroup>
                 <SelectItem value="house">บ้าน</SelectItem>
                 <SelectItem value="car">รถ</SelectItem>
-                <SelectItem value="sea">ทะเล</SelectItem>
+                <SelectItem value="beach">ทะเล</SelectItem>
                 <SelectItem value="school">โรงเรียน</SelectItem>
                 <SelectItem value="others">อื่นๆ</SelectItem>
               </SelectGroup>
@@ -41,12 +41,14 @@ const Page = () => {
         </div>
       </div>
       <div className="row-start-4 ">
-        <NextButton
-          variant="ghost"
-          label="แตะเพื่อไปต่อ"
-          url="web-question-5"
-          className="text-remark text-main-cream opacity-60 hover:opacity-100 hover:text-main-cream hover:bg-transparent"
-        />
+        {location && (
+          <NextButton
+            variant="ghost"
+            label="แตะเพื่อไปต่อ"
+            url="web-question-5"
+            className="text-remark text-main-cream opacity-60 hover:opacity-100 hover:text-main-cream hover:bg-transparent"
+          />
+        )}
       </div>
     </>
   );

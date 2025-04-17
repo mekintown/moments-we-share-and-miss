@@ -33,10 +33,10 @@ const Page = () => {
       <div className="row-start-2 row-span-2 text-center text-subheader text-main-cream">
         <div className="">ในช่วงเวลานั้น</div>
         <div className="">แวบแรก {name} นึกถึง...</div>
-        <div className="">
+        <div className="py-3">
           <Select onValueChange={(value) => setWho(value)}>
-            <SelectTrigger className="border-2 border-main-cream text-main-cream">
-              <SelectValue placeholder="" />
+            <SelectTrigger className="border-2 border-main-cream !text-main-cream">
+              <SelectValue placeholder="เลือกตัวเลือก" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
@@ -59,7 +59,7 @@ const Page = () => {
         </div>
       </div>
       <div className="row-start-4 ">
-        <NextButton url="web-question-3" />
+        <NextButton url="web-question-3" disabled={who === null} />
       </div>
     </>
   );

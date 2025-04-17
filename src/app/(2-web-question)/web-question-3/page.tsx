@@ -49,11 +49,11 @@ const Page = () => {
         <div className="">ความสัมพันธ์ของ</div>
         <div className="">{name} กับคนที่นึกถึง</div>
         <div className="">เป็นแบบไหนกันนะ</div>
-        <div className="">
+        <div className="py-3 ">
           {isParentCategory ? (
             <Select onValueChange={(value) => setWhom(value)}>
-              <SelectTrigger className="border-2 border-main-cream text-main-cream">
-                <SelectValue placeholder="" />
+              <SelectTrigger className="border-2 border-main-cream !text-main-cream">
+                <SelectValue placeholder="เลือกตัวเลือก" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
@@ -87,7 +87,7 @@ const Page = () => {
         </div>
       </div>
       <div className="row-start-4 ">
-        <NextButton url="web-question-4" />
+        <NextButton url="web-question-4" disabled={whom === null} />
       </div>
     </>
   );
