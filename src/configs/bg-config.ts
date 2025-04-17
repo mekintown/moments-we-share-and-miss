@@ -288,4 +288,39 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
     imagesPreload: [],
     redirectTo: "web-reveal-1",
   },
+  "web-conclusion-1": {
+    image: "/backgrounds/main-background.gif",
+    redirectTo: "/web-conclusion-2",
+    imagesPreload: ["/animations/transitions/conclusion/conclusion2.mp4"],
+  },
+  "web-conclusion-2": {
+    image: "/animations/transitions/conclusion/conclusion2.mp4",
+    video: true,
+    imagesPreload: ["/animations/transitions/conclusion/conclusion3.mp4"],
+  },
+  "web-conclusion-3": {
+    image: "/animations/transitions/conclusion/conclusion3.mp4",
+    video: true,
+    imagesPreload: ["/animations/transitions/conclusion/conclusion4.mp4"],
+  },
+  "web-conclusion-4": {
+    image: "/animations/transitions/conclusion/conclusion4.mp4",
+    video: true,
+    imagesPreload: ["/animations/transitions/conclusion/conclusion5.mp4"],
+  },
+  "web-conclusion-5": {
+    image: "/animations/transitions/conclusion/conclusion5.mp4",
+    video: true,
+    imagesPreload: ["/animations/transitions/conclusion/conclusion6.mp4"],
+  },
+  "web-conclusion-6": {
+    image: "/animations/transitions/conclusion/conclusion6.mp4",
+    video: true,
+    imagesPreload: ["/animations/transitions/conclusion/conclusion7.mp4"],
+  },
+  "web-conclusion-7": {
+    image: "/animations/transitions/conclusion/conclusion7.mp4",
+    video: true,
+    imagesPreload: [],
+  },
 } as const;
