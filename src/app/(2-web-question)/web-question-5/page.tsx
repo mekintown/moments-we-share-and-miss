@@ -5,7 +5,7 @@ import { TextAreaWithCounter } from "@/components/TextAreaWithCounter";
 import { useEffect, useState } from "react";
 
 const locationSlugMap: Record<string, string> = {
-  บ้าน: "house",
+  บ้าน: "home",
   รถ: "car",
   ทะเล: "beach",
   โรงเรียน: "school",
