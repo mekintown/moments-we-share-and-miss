@@ -103,7 +103,7 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
   "web-question-5": {
     image: "/backgrounds/main-background.gif",
     imagesPreload: [
-      "/animations/locations/location-house.mp4",
+      "/animations/locations/location-home.mp4",
       "/animations/locations/location-car.mp4",
       "/animations/locations/location-beach.mp4",
       "/animations/locations/location-school.mp4",
@@ -118,8 +118,8 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
     image: "/backgrounds/main-background.gif",
     imagesPreload: [],
   },
-  "web-question-house": {
-    image: "/animations/locations/location-house.mp4",
+  "web-question-home": {
+    image: "/animations/locations/location-home.mp4",
     video: true,
     redirectTo: "web-question-7",
   },
