@@ -7,18 +7,20 @@ import { useEffect, useState } from "react";
 export default function Page() {
   const [name, setName] = useState<string | null>("");
   const [color, setColor] = useState("");
+
   useEffect(() => {
     localStorage.setItem("color", color ?? "");
     setName(localStorage.getItem("name"));
   }, [color]);
+
   return (
-    <div className="text-center text-subheader space-y-4">
+    <div className="w-full row-span-4 text-center text-subheader space-y-4">
       <div className="text-main-cream ">
-        <div className="">ถ้าให้ลองนึกย้อนกลับไป ณ เวลานั้น</div>
+        <div className="text-nowrap">ถ้าให้ลองนึกย้อนกลับไป ณ เวลานั้น</div>
         <div className="">{name}</div>
         <div className="">เห็นมันเป็นสีอะไรหรอ?</div>
       </div>
-      <div className="grid grid-cols-2 gap-5 px-17">
+      <div className="grid grid-cols-2 gap-4 px-17">
         <Link href="/web-color-6">
           <Button
             className="bg-sub-red text-main-cream w-full"
