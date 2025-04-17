@@ -134,7 +134,7 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
     redirectTo: "web-question-7",
   },
   "web-question-school": {
-    image: "/animations/locations/location-scool.mp4",
+    image: "/animations/locations/location-school.mp4",
     video: true,
     redirectTo: "web-question-7",
   },
