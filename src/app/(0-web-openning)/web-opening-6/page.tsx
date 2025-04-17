@@ -1,5 +1,6 @@
 "use client";
 
+import NextButton from "@/components/NextButton";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -14,38 +15,63 @@ import { useEffect, useState } from "react";
 export default function Page() {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
+
+  const isValidAge = (value: string) => {
+    const num = Number(value);
+    return !isNaN(num) && num > 0 && Number.isInteger(num);
+  };
+
+  const handleAgeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value;
+    if (/^\d*$/.test(input)) {
+      setAge(input);
+    }
+  };
+
   useEffect(() => {
-    localStorage.setItem("age", age);
-    localStorage.setItem("gender", gender);
+    if (isValidAge(age)) {
+      localStorage.setItem("age", age);
+    }
+    if (gender) {
+      localStorage.setItem("gender", gender);
+    }
   }, [age, gender]);
 
   return (
-    <div className="row-span-2 text-center text-body space-y-5">
-      <div className="text-subheader text-main-cream">อายุ</div>
-      <div className="">
-        <Input
-          type="input"
-          className="text-main-cream border-2 border-main-cream"
-          onChange={(e) => {
-            setAge(e.target.value);
-          }}
-        />
+    <>
+      <div className="row-start-2">
+        <div className="row-span-2 text-center text-body space-y-5">
+          <div className="text-subheader text-main-cream">อายุ</div>
+          <div className="">
+            <Input
+              type="input"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              className="text-main-cream border-2 border-main-cream"
+              value={age}
+              onChange={handleAgeChange}
+            />
+          </div>
+          <div className="text-subheader text-main-cream">เพศ</div>
+          <div className="">
+            <Select onValueChange={(value) => setGender(value)}>
+              <SelectTrigger className="border-2 border-main-cream text-main-cream">
+                <SelectValue placeholder="" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem value="male">ชาย</SelectItem>
+                  <SelectItem value="female">หญิง</SelectItem>
+                  <SelectItem value="others">ไม่ระบุ</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
       </div>
-      <div className="text-subheader text-main-cream">เพศ</div>
-      <div className="">
-        <Select onValueChange={(value) => setGender(value)}>
-          <SelectTrigger className="border-2 border-main-cream text-main-cream">
-            <SelectValue placeholder="" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectItem value="male">ชาย</SelectItem>
-              <SelectItem value="female">หญิง</SelectItem>
-              <SelectItem value="others">ไม่ระบุ</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+      <div className="row-start-4">
+        <NextButton url="/web-intro-1" disabled={age === "" || gender === ""} />
       </div>
-    </div>
+    </>
   );
 }
