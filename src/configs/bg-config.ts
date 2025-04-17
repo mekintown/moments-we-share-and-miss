@@ -92,6 +92,43 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
     image: "/backgrounds/main-background.gif",
     imagesPreload: [],
   },
+  "web-question-5": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-question-7": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-question-8": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-question-house": {
+    image: "/animations/locations/location-house.mp4",
+    video: true,
+    redirectTo: "web-question-7",
+  },
+  "web-question-car": {
+    image: "/animations/locations/location-car.mp4",
+    video: true,
+    redirectTo: "web-question-7",
+  },
+  "web-question-beach": {
+    image: "/animations/locations/location-beach.mp4",
+    video: true,
+    redirectTo: "web-question-7",
+  },
+  "web-question-school": {
+    image: "/animations/locations/location-scool.mp4",
+    video: true,
+    redirectTo: "web-question-7",
+  },
+  "web-question-other": {
+    image: "/animations/locations/location-others.mp4",
+    video: true,
+    redirectTo: "web-question-7",
+  },
   "web-color-1": {
     image: "/backgrounds/main-background.gif",
     imagesPreload: [],
