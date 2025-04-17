@@ -10,7 +10,7 @@ interface BackgroundConfig {
 export const backgroundMapConfig: Record<string, BackgroundConfig> = {
   "": {
     image: "/backgrounds/home-background.gif",
-    imagesPreload: ["/backgrounds/main-background.gif"],
+    imagesPreload: ["/backgrounds/main-background.gif", "/logo/logo-full.svg"],
   },
   "web-opening-1": {
     image: "/backgrounds/main-background.gif",
@@ -22,7 +22,7 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
   },
   "web-opening-3": {
     image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    imagesPreload: ["/illustrations/ios1.webp", "/illustrations/ios2.webp"],
   },
   "web-opening-4": {
     image: "/backgrounds/main-background.gif",
@@ -34,47 +34,55 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
   },
   "web-opening-6": {
     image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    imagesPreload: ["/animations/transitions/intro/intro1.mp4"],
   },
   "web-intro-1": {
     image: "/animations/transitions/intro/intro1.mp4",
     video: true,
     redirectTo: "web-intro-2",
+    imagesPreload: ["/animations/transitions/intro/intro2.mp4"],
   },
   "web-intro-2": {
     image: "/animations/transitions/intro/intro2.mp4",
     video: true,
     redirectTo: "web-intro-3",
+    imagesPreload: ["/animations/transitions/intro/intro3.mp4"],
   },
   "web-intro-3": {
     image: "/animations/transitions/intro/intro3.mp4",
     video: true,
     redirectTo: "web-intro-4",
+    imagesPreload: ["/animations/transitions/intro/intro4.mp4"],
   },
   "web-intro-4": {
     image: "/animations/transitions/intro/intro4.mp4",
     video: true,
     redirectTo: "web-intro-5",
+    imagesPreload: ["/animations/transitions/intro/intro5.mp4"],
   },
   "web-intro-5": {
     image: "/animations/transitions/intro/intro5.mp4",
     video: true,
     redirectTo: "web-intro-6",
+    imagesPreload: ["/animations/transitions/intro/intro6.mp4"],
   },
   "web-intro-6": {
     image: "/animations/transitions/intro/intro6.mp4",
     video: true,
     redirectTo: "web-intro-7",
+    imagesPreload: ["/animations/transitions/intro/intro7.mp4"],
   },
   "web-intro-7": {
     image: "/animations/transitions/intro/intro7.mp4",
     video: true,
     redirectTo: "web-intro-8",
+    imagesPreload: ["/animations/transitions/intro/intro8.mp4"],
   },
   "web-intro-8": {
     image: "/animations/transitions/intro/intro8.mp4",
     video: true,
     redirectTo: "web-question-1",
+    imagesPreload: ["/animations/transitions/intro/question1.mp4"],
   },
   "web-question-1": {
     image: "/animations/transitions/intro/question1.mp4",
@@ -94,7 +102,13 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
   },
   "web-question-5": {
     image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    imagesPreload: [
+      "/animations/locations/location-house.mp4",
+      "/animations/locations/location-car.mp4",
+      "/animations/locations/location-beach.mp4",
+      "/animations/locations/location-school.mp4",
+      "/animations/locations/location-others.mp4",
+    ],
   },
   "web-question-7": {
     image: "/backgrounds/main-background.gif",
@@ -131,17 +145,19 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
   },
   "web-color-1": {
     image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    imagesPreload: ["/animations/transitions/colors/color2.mp4"],
   },
   "web-color-2": {
     image: "/animations/transitions/colors/color2.mp4",
     video: true,
     redirectTo: "web-color-3",
+    imagesPreload: ["/animations/transitions/colors/color3.mp4"],
   },
   "web-color-3": {
     image: "/animations/transitions/colors/color3.mp4",
     video: true,
     redirectTo: "web-color-4",
+    imagesPreload: ["/animations/transitions/colors/color4.mp4"],
   },
   "web-color-4": {
     image: "/animations/transitions/colors/color4.mp4",
@@ -201,25 +217,29 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
   },
   "web-sound-2": {
     image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    imagesPreload: ["/animations/transitions/sound/sound3.mp4"],
   },
   "web-sound-3": {
-    image: "/backgrounds/main-background.gif",
+    image: "/animations/transitions/sound/sound3.mp4",
+    video: true,
     redirectTo: "/web-sound-4",
-    imagesPreload: [],
+    imagesPreload: ["/animations/transitions/sound/sound4.mp4"],
   },
   "web-sound-4": {
-    image: "/backgrounds/main-background.gif",
+    image: "/animations/transitions/sound/sound4.mp4",
+    video: true,
     redirectTo: "/web-sound-5",
-    imagesPreload: [],
+    imagesPreload: ["/animations/transitions/sound/sound5.mp4"],
   },
   "web-sound-5": {
-    image: "/backgrounds/main-background.gif",
+    image: "/animations/transitions/sound/sound5.mp4",
+    video: true,
     redirectTo: "/web-sound-6",
-    imagesPreload: [],
+    imagesPreload: ["/animations/transitions/sound/sound6.mp4"],
   },
   "web-sound-6": {
-    image: "/backgrounds/main-background.gif",
+    image: "/animations/transitions/sound/sound6.mp4",
+    video: true,
     imagesPreload: [],
   },
   "web-sound-7": {
