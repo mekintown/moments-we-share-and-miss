@@ -6,8 +6,8 @@ export default function Page() {
   const [name, setName] = useState<string | null>(null);
 
   useEffect(() => {
-    const savedColor = localStorage.getItem("name");
-    setName(savedColor);
+    const savedName = localStorage.getItem("name");
+    setName(savedName);
   }, []);
 
   return (

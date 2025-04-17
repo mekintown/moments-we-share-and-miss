@@ -37,16 +37,58 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
     imagesPreload: [],
   },
   "web-intro-1": {
-    image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    image: "/animations/transitions/intro/intro1.mp4",
+    video: true,
     redirectTo: "web-intro-2",
   },
   "web-intro-2": {
-    image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
-    // redirectTo: "web-intro-3",
+    image: "/animations/transitions/intro/intro2.mp4",
+    video: true,
+    redirectTo: "web-intro-3",
   },
   "web-intro-3": {
+    image: "/animations/transitions/intro/intro3.mp4",
+    video: true,
+    redirectTo: "web-intro-4",
+  },
+  "web-intro-4": {
+    image: "/animations/transitions/intro/intro4.mp4",
+    video: true,
+    redirectTo: "web-intro-5",
+  },
+  "web-intro-5": {
+    image: "/animations/transitions/intro/intro5.mp4",
+    video: true,
+    redirectTo: "web-intro-6",
+  },
+  "web-intro-6": {
+    image: "/animations/transitions/intro/intro6.mp4",
+    video: true,
+    redirectTo: "web-intro-7",
+  },
+  "web-intro-7": {
+    image: "/animations/transitions/intro/intro7.mp4",
+    video: true,
+    redirectTo: "web-intro-8",
+  },
+  "web-intro-8": {
+    image: "/animations/transitions/intro/intro8.mp4",
+    video: true,
+    redirectTo: "web-question-1",
+  },
+  "web-question-1": {
+    image: "/animations/transitions/intro/question1.mp4",
+    video: true,
+  },
+  "web-question-2": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-question-3": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-question-4": {
     image: "/backgrounds/main-background.gif",
     imagesPreload: [],
   },

@@ -2,12 +2,10 @@
 
 const Page = () => {
   return (
-    <>
-      <div className="text-primary row-span-4 text-center text-subheader z-10">
-        <div className="">ชีวิตของเรา</div>
-        <div className="">เต็มไปด้วยความทรงจำมากมาย…</div>
-      </div>
-    </>
+    <div className="row-span-4 text-center text-subheader text-main-cream">
+      <div className="">ชีวิตของเรา</div>
+      <div className="">เต็มไปด้วยความทรงจำมากมาย…</div>
+    </div>
   );
 };
 export default Page;
