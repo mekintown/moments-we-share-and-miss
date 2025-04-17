@@ -10,7 +10,7 @@ interface BackgroundConfig {
 export const backgroundMapConfig: Record<string, BackgroundConfig> = {
   "": {
     image: "/backgrounds/home-background.gif",
-    imagesPreload: ["/backgrounds/main-background.gif"],
+    imagesPreload: ["/backgrounds/main-background.gif", "/logo/logo-full.svg"],
   },
   "web-opening-1": {
     image: "/backgrounds/main-background.gif",
@@ -22,7 +22,7 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
   },
   "web-opening-3": {
     image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    imagesPreload: ["/illustrations/ios1.webp", "/illustrations/ios2.webp"],
   },
   "web-opening-4": {
     image: "/backgrounds/main-background.gif",
