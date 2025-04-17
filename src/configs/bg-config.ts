@@ -138,7 +138,7 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
     video: true,
     redirectTo: "web-question-7",
   },
-  "web-question-other": {
+  "web-question-others": {
     image: "/animations/locations/location-others.mp4",
     video: true,
     redirectTo: "web-question-7",
@@ -287,6 +287,22 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
     image: "/backgrounds/main-background.gif",
     imagesPreload: [],
     redirectTo: "web-reveal-1",
+  },
+  "web-reveal-1": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-reveal-2": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-reveal-3": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-reveal-4": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
   },
   "web-conclusion-1": {
     image: "/backgrounds/main-background.gif",

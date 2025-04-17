@@ -9,7 +9,7 @@ export default function Page() {
   const [color, setColor] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("color", color ?? "");
+    localStorage.setItem("web_question_color", color ?? "");
     setName(localStorage.getItem("name"));
   }, [color]);
 
@@ -25,7 +25,7 @@ export default function Page() {
           <Button
             className="bg-sub-red text-main-cream w-full"
             onClick={() => {
-              setColor("red");
+              setColor("แดง");
             }}
           >
             แดง
@@ -35,7 +35,7 @@ export default function Page() {
           <Button
             className="bg-sub-orange text-main-cream w-full"
             onClick={() => {
-              setColor("orange");
+              setColor("ส้ม");
             }}
           >
             ส้ม
@@ -45,7 +45,7 @@ export default function Page() {
           <Button
             className="bg-sub-yellow w-full"
             onClick={() => {
-              setColor("yellow");
+              setColor("เหลือง");
             }}
           >
             เหลือง
@@ -54,7 +54,7 @@ export default function Page() {
         <Link
           href="/web-color-6"
           onClick={() => {
-            setColor("green");
+            setColor("เขียว");
           }}
         >
           <Button className="bg-sub-green text-main-cream w-full">เขียว</Button>
@@ -62,7 +62,7 @@ export default function Page() {
         <Link
           href="/web-color-6"
           onClick={() => {
-            setColor("blue");
+            setColor("ฟ้า");
           }}
         >
           <Button className="bg-sub-blue w-full">ฟ้า</Button>
@@ -70,7 +70,7 @@ export default function Page() {
         <Link
           href="/web-color-6"
           onClick={() => {
-            setColor("purple");
+            setColor("ม่วง");
           }}
         >
           <Button className="bg-sub-purple w-full">ม่วง</Button>
@@ -78,7 +78,7 @@ export default function Page() {
         <Link
           href="/web-color-6"
           onClick={() => {
-            setColor("pink");
+            setColor("ชมพู");
           }}
         >
           <Button className="bg-sub-pink w-full">ชมพู</Button>
@@ -86,7 +86,7 @@ export default function Page() {
         <Link
           href="/web-color-6"
           onClick={() => {
-            setColor("white");
+            setColor("ขาว");
           }}
         >
           <Button className="bg-main-cream w-full">ขาว</Button>

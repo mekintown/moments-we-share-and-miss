@@ -40,19 +40,17 @@ const Page = () => {
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectItem value="father">พ่อ</SelectItem>
-                <SelectItem value="mother">แม่</SelectItem>
-                <SelectItem value="daughter_or_niece">
-                  ลูกสาว/หลานสาว
-                </SelectItem>
-                <SelectItem value="son_or_nephew">ลูกชาย/หลานชาย</SelectItem>
-                <SelectItem value="child_or_grandchild_neutral">
+                <SelectItem value="พ่อ">พ่อ</SelectItem>
+                <SelectItem value="แม่">แม่</SelectItem>
+                <SelectItem value="ลูกสาว/หลานสาว">ลูกสาว/หลานสาว</SelectItem>
+                <SelectItem value="ลูกชาย/หลานชาย">ลูกชาย/หลานชาย</SelectItem>
+                <SelectItem value="ลูก/หลาน (ไม่ระบุเพศ)">
                   ลูก/หลาน (ไม่ระบุเพศ)
                 </SelectItem>
-                <SelectItem value="grandmother">ยาย/ย่า</SelectItem>
-                <SelectItem value="grandfather">ตา/ปู่</SelectItem>
-                <SelectItem value="aunt">ป้า</SelectItem>
-                <SelectItem value="uncle">ลุง</SelectItem>
+                <SelectItem value="ยาย/ย่า">ยาย/ย่า</SelectItem>
+                <SelectItem value="ตา/ปู่">ตา/ปู่</SelectItem>
+                <SelectItem value="ป้า">ป้า</SelectItem>
+                <SelectItem value="ลุง">ลุง</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>

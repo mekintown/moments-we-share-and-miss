@@ -22,7 +22,7 @@ export default function Page() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="text-main-cream z-10"
+        className="text-main-cream z-10 text-nowrap"
       >
         <div className="">'Within That Moment'</div>
         <div className="">เป็นส่วนหนึ่งของการศึกษาปริญญานิพนธ์</div>

@@ -8,7 +8,7 @@ const Page = () => {
   const [answerSound, setAnswerSound] = useState("");
   const [name, setName] = useState<string | null>("");
   useEffect(() => {
-    localStorage.setItem("answerSound", answerSound);
+    localStorage.setItem("web_question_sound", answerSound);
     setName(localStorage.getItem("name"));
   }, [answerSound]);
 
@@ -33,7 +33,7 @@ const Page = () => {
       </div>
       <div className="row-start-4">
         <NextButton
-          url={`/web-color-1`}
+          url={`/web-transition-1`}
           label="ต่อไป"
           disabled={answerSound === ""}
         />

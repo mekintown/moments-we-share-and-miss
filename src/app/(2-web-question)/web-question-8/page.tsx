@@ -16,7 +16,7 @@ const Page = () => {
 
   useEffect(() => {
     if (answerImportant) {
-      localStorage.setItem("answerImportant", answerImportant);
+      localStorage.setItem("web_answer_important", answerImportant);
     }
   }, [answerImportant]);
 

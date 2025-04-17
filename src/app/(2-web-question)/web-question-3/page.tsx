@@ -12,14 +12,7 @@ import {
 import { useState, useEffect } from "react";
 
 const Page = () => {
-  const parent = [
-    "father",
-    "mother",
-    "grandmother",
-    "grandfather",
-    "aunt",
-    "uncle",
-  ];
+  const parent = ["พ่อ", "แม่", "ยาย/ย่า", "ตา/ปู่", "ป้า", "ลุง"];
   const [name, setName] = useState<string | null>(null);
   const [whom, setWhom] = useState<string | null>(null);
   const [who, setWho] = useState<string | null>(null);
@@ -57,11 +50,9 @@ const Page = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem value="daughter_or_niece">
-                    ลูกสาว/หลานสาว
-                  </SelectItem>
-                  <SelectItem value="son_or_nephew">ลูกชาย/หลานชาย</SelectItem>
-                  <SelectItem value="child_or_grandchild_neutral">
+                  <SelectItem value="ลูกสาว/หลานสาว">ลูกสาว/หลานสาว</SelectItem>
+                  <SelectItem value="ลูกชาย/หลานชาย">ลูกชาย/หลานชาย</SelectItem>
+                  <SelectItem value="ลูก/หลาน (ไม่ระบุเพศ)">
                     ลูก/หลาน (ไม่ระบุเพศ)
                   </SelectItem>
                 </SelectGroup>
@@ -74,12 +65,12 @@ const Page = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem value="father">พ่อ</SelectItem>
-                  <SelectItem value="mother">แม่</SelectItem>
-                  <SelectItem value="grandmother">ยาย/ย่า</SelectItem>
-                  <SelectItem value="grandfather">ตา/ปู่</SelectItem>
-                  <SelectItem value="aunt">ป้า</SelectItem>
-                  <SelectItem value="uncle">ลุง</SelectItem>
+                  <SelectItem value="พ่อ">พ่อ</SelectItem>
+                  <SelectItem value="แม่">แม่</SelectItem>
+                  <SelectItem value="ยาย/ย่า">ยาย/ย่า</SelectItem>
+                  <SelectItem value="ตา/ปู่">ตา/ปู่</SelectItem>
+                  <SelectItem value="ป้า">ป้า</SelectItem>
+                  <SelectItem value="ลุง">ลุง</SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
