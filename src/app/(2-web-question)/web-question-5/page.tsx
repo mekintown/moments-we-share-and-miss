@@ -4,13 +4,21 @@ import NextButton from "@/components/NextButton";
 import { TextAreaWithCounter } from "@/components/TextAreaWithCounter";
 import { useEffect, useState } from "react";
 
+const locationSlugMap: Record<string, string> = {
+  บ้าน: "house",
+  รถ: "car",
+  ทะเล: "beach",
+  โรงเรียน: "school",
+  อื่นๆ: "others",
+};
+
 const Page = () => {
   const [answerWhy, setAnswerWhy] = useState<string>("");
   const [location, setLocation] = useState<string | null>(null);
 
   useEffect(() => {
     if (answerWhy) {
-      localStorage.setItem("answerWhy", answerWhy);
+      localStorage.setItem("web_answer_why", answerWhy);
     }
   }, [answerWhy]);
 
@@ -42,7 +50,7 @@ const Page = () => {
 
       <div className="row-start-4">
         <NextButton
-          url={`/web-question-${location}`}
+          url={`/web-question-${location ? locationSlugMap[location] : ""}`}
           label="ต่อไป"
           disabled={answerWhy === ""}
         />

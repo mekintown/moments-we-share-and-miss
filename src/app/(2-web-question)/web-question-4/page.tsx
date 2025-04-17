@@ -30,11 +30,11 @@ const Page = () => {
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectItem value="house">บ้าน</SelectItem>
-                <SelectItem value="car">รถ</SelectItem>
-                <SelectItem value="beach">ทะเล</SelectItem>
-                <SelectItem value="school">โรงเรียน</SelectItem>
-                <SelectItem value="others">อื่นๆ</SelectItem>
+                <SelectItem value="บ้าน">บ้าน</SelectItem>
+                <SelectItem value="รถ">รถ</SelectItem>
+                <SelectItem value="ทะเล">ทะเล</SelectItem>
+                <SelectItem value="โรงเรียน">โรงเรียน</SelectItem>
+                <SelectItem value="อื่นๆ">อื่นๆ</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
