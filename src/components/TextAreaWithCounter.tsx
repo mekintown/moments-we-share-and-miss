@@ -17,7 +17,7 @@ export const TextAreaWithCounter = ({
   return (
     <div className={cn(className, "relative")}>
       <Textarea
-        className="border-2 rounded-xl h-full resize-none text-body py-2 px-4 caret-main-cream"
+        className="border-2 rounded-xl h-full resize-none text-body py-2 px-4 caret-main-cream border-main-cream"
         onChange={(e) => {
           if (!maxCount || e.target.value.length <= maxCount) {
             onChange(e);

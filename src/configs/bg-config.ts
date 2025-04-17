@@ -37,36 +37,115 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
     imagesPreload: [],
   },
   "web-intro-1": {
-    image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    image: "/animations/transitions/intro/intro1.mp4",
+    video: true,
     redirectTo: "web-intro-2",
   },
   "web-intro-2": {
-    image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
-    // redirectTo: "web-intro-3",
+    image: "/animations/transitions/intro/intro2.mp4",
+    video: true,
+    redirectTo: "web-intro-3",
   },
   "web-intro-3": {
+    image: "/animations/transitions/intro/intro3.mp4",
+    video: true,
+    redirectTo: "web-intro-4",
+  },
+  "web-intro-4": {
+    image: "/animations/transitions/intro/intro4.mp4",
+    video: true,
+    redirectTo: "web-intro-5",
+  },
+  "web-intro-5": {
+    image: "/animations/transitions/intro/intro5.mp4",
+    video: true,
+    redirectTo: "web-intro-6",
+  },
+  "web-intro-6": {
+    image: "/animations/transitions/intro/intro6.mp4",
+    video: true,
+    redirectTo: "web-intro-7",
+  },
+  "web-intro-7": {
+    image: "/animations/transitions/intro/intro7.mp4",
+    video: true,
+    redirectTo: "web-intro-8",
+  },
+  "web-intro-8": {
+    image: "/animations/transitions/intro/intro8.mp4",
+    video: true,
+    redirectTo: "web-question-1",
+  },
+  "web-question-1": {
+    image: "/animations/transitions/intro/question1.mp4",
+    video: true,
+  },
+  "web-question-2": {
     image: "/backgrounds/main-background.gif",
     imagesPreload: [],
+  },
+  "web-question-3": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-question-4": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-question-5": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-question-7": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-question-8": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-question-house": {
+    image: "/animations/locations/location-house.mp4",
+    video: true,
+    redirectTo: "web-question-7",
+  },
+  "web-question-car": {
+    image: "/animations/locations/location-car.mp4",
+    video: true,
+    redirectTo: "web-question-7",
+  },
+  "web-question-beach": {
+    image: "/animations/locations/location-beach.mp4",
+    video: true,
+    redirectTo: "web-question-7",
+  },
+  "web-question-school": {
+    image: "/animations/locations/location-scool.mp4",
+    video: true,
+    redirectTo: "web-question-7",
+  },
+  "web-question-other": {
+    image: "/animations/locations/location-others.mp4",
+    video: true,
+    redirectTo: "web-question-7",
   },
   "web-color-1": {
     image: "/backgrounds/main-background.gif",
     imagesPreload: [],
   },
   "web-color-2": {
-    image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    image: "/animations/transitions/colors/color2.mp4",
+    video: true,
     redirectTo: "web-color-3",
   },
   "web-color-3": {
-    image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    image: "/animations/transitions/colors/color3.mp4",
+    video: true,
     redirectTo: "web-color-4",
   },
   "web-color-4": {
-    image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    image: "/animations/transitions/colors/color4.mp4",
+    video: true,
   },
   "web-color-5": {
     image: "/backgrounds/main-background.gif",
