@@ -70,7 +70,11 @@ export default function Page() {
         </div>
       </div>
       <div className="row-start-4">
-        <NextButton url="/web-intro-1" disabled={age === "" || gender === ""} />
+        <NextButton
+          label="เริ่มต้น"
+          url="/web-intro-1"
+          disabled={age === "" || gender === ""}
+        />
       </div>
     </>
   );
