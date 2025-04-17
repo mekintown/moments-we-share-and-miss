@@ -13,21 +13,21 @@ export const metadata: Metadata = {
   title: "Moments We Share (and miss)",
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
-  return (
-    <html lang="th">
-      <body
-        style={{ fontFamily: "var(--font-pridi), sans-serif" }}
-        className={`${pridi.variable}`}
-      >
-        <div className="antialiased relative mx-auto min-h-screen w-full max-w-md overflow-x-hidden overscroll-none`">
-          <AnimatedLayout>{children}</AnimatedLayout>
-        </div>
-      </body>
-    </html>
-  );
-}
+}>) => (
+  <html lang="th">
+    <body
+      style={{ fontFamily: "var(--font-pridi), sans-serif" }}
+      className={`${pridi.variable}`}
+    >
+      <div className="antialiased relative mx-auto min-h-screen w-full max-w-md overflow-hidden overscroll-none`">
+        <AnimatedLayout>{children}</AnimatedLayout>
+      </div>
+    </body>
+  </html>
+);
+
+export default RootLayout;
