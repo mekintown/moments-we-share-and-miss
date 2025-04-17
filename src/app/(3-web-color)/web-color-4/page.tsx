@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <>
       <div className="row-start-2 row-span-2 text-center text-subheader text-main-cream">
-        <div className="">อาจเป็นเพราะบรรยากาศ</div>
+        <div className="">หรือคนที่อยู่ด้วย…</div>
       </div>
       <div className="row-start-4">
         <NextButton
