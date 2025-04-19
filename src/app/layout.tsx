@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Pridi } from "next/font/google";
 import "./globals.css";
 import AnimatedLayout from "@/components/AnimatedLayout";
+import AudioProvider from "@/providers/AudioProvider";
 
 const pridi = Pridi({
   variable: "--font-pridi",
@@ -23,9 +24,11 @@ const RootLayout = ({
       style={{ fontFamily: "var(--font-pridi), sans-serif" }}
       className={`${pridi.variable}`}
     >
-      <div className="antialiased relative mx-auto min-h-screen w-full max-w-md overflow-hidden overscroll-none`">
-        <AnimatedLayout>{children}</AnimatedLayout>
-      </div>
+      <AudioProvider>
+        <div className="antialiased relative mx-auto min-h-screen w-full max-w-md overflow-hidden overscroll-none`">
+          <AnimatedLayout>{children}</AnimatedLayout>
+        </div>
+      </AudioProvider>
     </body>
   </html>
 );
