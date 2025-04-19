@@ -6,31 +6,38 @@ import {
   WebAnswerColor,
   WebQuestionColor,
 } from "@/constants/localStorageConstants";
+import { WebColor } from "@/enums/enums";
 import { useEffect, useState } from "react";
 
-const colorSlugMap: Record<string, string> = {
-  แดง: "red",
-  ส้ม: "orange",
-  เหลือง: "yellow",
-  เขียว: "green",
-  ฟ้า: "blue",
-  ม่วง: "purple",
-  ชมพู: "pink",
-  ขาว: "white",
+const colorSlugMap: Record<WebColor, string> = {
+  [WebColor.Red]: "red",
+  [WebColor.Orange]: "orange",
+  [WebColor.Yellow]: "yellow",
+  [WebColor.Green]: "green",
+  [WebColor.Blue]: "blue",
+  [WebColor.Purple]: "purple",
+  [WebColor.Pink]: "pink",
+  [WebColor.White]: "white",
 };
 
 export default function Page() {
   const [answerColor, setAnswerColor] = useState("");
-  const [color, setColor] = useState<string | null>(null);
+  const [color, setColor] = useState<WebColor | null>(null);
 
   useEffect(() => {
     const savedColor = localStorage.getItem(WebQuestionColor);
-    setColor(savedColor);
+    if (
+      savedColor &&
+      Object.values(WebColor).includes(savedColor as WebColor)
+    ) {
+      setColor(savedColor as WebColor);
+    }
   }, []);
 
   useEffect(() => {
     localStorage.setItem(WebAnswerColor, answerColor);
   }, [answerColor]);
+
   return (
     <>
       <div className="w-full h-full row-start-2 row-span-2">
@@ -48,7 +55,7 @@ export default function Page() {
       </div>
       <div className="row-start-4">
         <NextButton
-          url={`/web-color-${color ? colorSlugMap[color] ?? "" : ""}`}
+          url={`/web-color-${color ? colorSlugMap[color] : ""}`}
           label="ต่อไป"
           disabled={answerColor === ""}
         />

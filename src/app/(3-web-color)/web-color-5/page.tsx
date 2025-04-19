@@ -2,12 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { WebQuestionColor, Name } from "@/constants/localStorageConstants";
+import { WebColor } from "@/enums/enums";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Page() {
   const [name, setName] = useState<string>("คุณ");
-  const [color, setColor] = useState<string>("red");
+  const [color, setColor] = useState<WebColor>(WebColor.Red);
 
   useEffect(() => {
     const saved = localStorage.getItem(Name);
@@ -18,6 +19,33 @@ export default function Page() {
     if (color) localStorage.setItem(WebQuestionColor, color);
   }, [color]);
 
+  const colorOptions: {
+    key: WebColor;
+    label: string;
+    className: string;
+  }[] = [
+    {
+      key: WebColor.Red,
+      label: "แดง",
+      className: "bg-sub-red text-main-cream",
+    },
+    {
+      key: WebColor.Orange,
+      label: "ส้ม",
+      className: "bg-sub-orange text-main-cream",
+    },
+    { key: WebColor.Yellow, label: "เหลือง", className: "bg-sub-yellow" },
+    {
+      key: WebColor.Green,
+      label: "เขียว",
+      className: "bg-sub-green text-main-cream",
+    },
+    { key: WebColor.Blue, label: "ฟ้า", className: "bg-sub-blue" },
+    { key: WebColor.Purple, label: "ม่วง", className: "bg-sub-purple" },
+    { key: WebColor.Pink, label: "ชมพู", className: "bg-sub-pink" },
+    { key: WebColor.White, label: "ขาว", className: "bg-main-cream" },
+  ];
+
   return (
     <div className="text-center text-subheader space-y-4">
       <div className="text-main-cream">
@@ -27,24 +55,7 @@ export default function Page() {
       </div>
 
       <div className="grid grid-cols-2 gap-5 px-17">
-        {[
-          { key: "red", label: "แดง", className: "bg-sub-red text-main-cream" },
-          {
-            key: "orange",
-            label: "ส้ม",
-            className: "bg-sub-orange text-main-cream",
-          },
-          { key: "yellow", label: "เหลือง", className: "bg-sub-yellow" },
-          {
-            key: "green",
-            label: "เขียว",
-            className: "bg-sub-green text-main-cream",
-          },
-          { key: "blue", label: "ฟ้า", className: "bg-sub-blue" },
-          { key: "purple", label: "ม่วง", className: "bg-sub-purple" },
-          { key: "pink", label: "ชมพู", className: "bg-sub-pink" },
-          { key: "white", label: "ขาว", className: "bg-main-cream" },
-        ].map(({ key, label, className }) => (
+        {colorOptions.map(({ key, label, className }) => (
           <Link key={key} href="/web-color-6">
             <Button
               className={`${className} w-full`}
