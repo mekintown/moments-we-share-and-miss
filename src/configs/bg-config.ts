@@ -10,11 +10,12 @@ interface BackgroundConfig {
 export const backgroundMapConfig: Record<string, BackgroundConfig> = {
   "": {
     image: "/backgrounds/home-background.gif",
-    imagesPreload: ["/backgrounds/main-background.gif", "/logo/logo-full.svg"],
+    imagesPreload: ["/backgrounds/web-opening-1.mp4", "/logo/logo-full.svg"],
   },
   "web-opening-1": {
-    image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    image: "/backgrounds/web-opening-1.mp4",
+    video: true,
+    imagesPreload: ["/backgrounds/main-background.gif"],
   },
   "web-opening-2": {
     image: "/backgrounds/main-background.gif",
