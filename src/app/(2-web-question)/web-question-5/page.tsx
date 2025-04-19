@@ -2,6 +2,7 @@
 
 import NextButton from "@/components/NextButton";
 import { TextAreaWithCounter } from "@/components/TextAreaWithCounter";
+import { Location, WebAnswerWhy } from "@/constants/localStorageConstants";
 import { useEffect, useState } from "react";
 
 const locationSlugMap: Record<string, string> = {
@@ -18,12 +19,12 @@ const Page = () => {
 
   useEffect(() => {
     if (answerWhy) {
-      localStorage.setItem("web_answer_why", answerWhy);
+      localStorage.setItem(WebAnswerWhy, answerWhy);
     }
   }, [answerWhy]);
 
   useEffect(() => {
-    const savedLocation = localStorage.getItem("location");
+    const savedLocation = localStorage.getItem(Location);
     if (savedLocation) {
       setLocation(savedLocation);
     }

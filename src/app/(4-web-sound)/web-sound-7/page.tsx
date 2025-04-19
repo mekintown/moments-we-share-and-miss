@@ -2,14 +2,15 @@
 
 import NextButton from "@/components/NextButton";
 import { TextAreaWithCounter } from "@/components/TextAreaWithCounter";
+import { Name, WebQuestionSound } from "@/constants/localStorageConstants";
 import { useEffect, useState } from "react";
 
 const Page = () => {
   const [answerSound, setAnswerSound] = useState("");
   const [name, setName] = useState<string | null>("");
   useEffect(() => {
-    localStorage.setItem("web_question_sound", answerSound);
-    setName(localStorage.getItem("name"));
+    localStorage.setItem(WebQuestionSound, answerSound);
+    setName(localStorage.getItem(Name));
   }, [answerSound]);
 
   return (

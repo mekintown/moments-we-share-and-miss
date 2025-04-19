@@ -1,0 +1,14 @@
+export const Name = "name";
+export const Age = "age";
+export const Gender = "gender";
+export const WebQuestionColor = "web_question_color";
+export const WebAnswerColor = "web_answer_color";
+export const Reason = "reason";
+export const Sound = "sound";
+export const Who = "who";
+export const Whom = "whom";
+export const Location = "location";
+export const WebAnswerWhy = "web_answer_why";
+export const WebQuestionSound = "web_question_sound";
+export const ImageSrc = "imageSrc";
+export const WebAnswerImportant = "web_answer_important";

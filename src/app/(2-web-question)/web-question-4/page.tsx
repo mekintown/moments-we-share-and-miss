@@ -9,13 +9,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Location } from "@/constants/localStorageConstants";
 import { useEffect, useState } from "react";
 
 const Page = () => {
   const [location, setLocation] = useState<string | null>(null);
   useEffect(() => {
     if (location) {
-      localStorage.setItem("location", location);
+      localStorage.setItem(Location, location);
     }
   }, [location]);
   return (

@@ -3,6 +3,11 @@
 import NextButton from "@/components/NextButton";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import {
+  ImageSrc,
+  WebAnswerColor,
+  WebQuestionColor,
+} from "@/constants/localStorageConstants";
 
 const Page = () => {
   const [color, setColor] = useState<string | null>(null);
@@ -10,9 +15,9 @@ const Page = () => {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
 
   useEffect(() => {
-    const savedColor = localStorage.getItem("web_question_color");
-    const savedColorAnswer = localStorage.getItem("web_answer_color");
-    const savedImgSrc = localStorage.getItem("imageSrc");
+    const savedColor = localStorage.getItem(WebQuestionColor);
+    const savedColorAnswer = localStorage.getItem(WebAnswerColor);
+    const savedImgSrc = localStorage.getItem(ImageSrc);
     setImageSrc(savedImgSrc);
     setColor(savedColor);
     setColorAnswer(savedColorAnswer);

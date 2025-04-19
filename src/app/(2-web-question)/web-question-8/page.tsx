@@ -2,13 +2,14 @@
 
 import NextButton from "@/components/NextButton";
 import { TextAreaWithCounter } from "@/components/TextAreaWithCounter";
+import { Name } from "@/constants/localStorageConstants";
 import { useEffect, useState } from "react";
 
 const Page = () => {
   const [answerImportant, setAnswerImportant] = useState<string>("");
   const [name, setName] = useState<string | null>(null);
   useEffect(() => {
-    const savedName = localStorage.getItem("name");
+    const savedName = localStorage.getItem(Name);
     if (savedName) {
       setName(savedName);
     }

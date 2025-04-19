@@ -1,6 +1,13 @@
 "use client";
 
 import NextButton from "@/components/NextButton";
+import {
+  ImageSrc,
+  Location,
+  WebAnswerWhy,
+  Who,
+  Whom,
+} from "@/constants/localStorageConstants";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
@@ -35,10 +42,10 @@ const Page = () => {
   const [imageSrc, setImageSrc] = useState<string>("");
 
   useEffect(() => {
-    const savedLocation = localStorage.getItem("location");
-    const savedWho = localStorage.getItem("who");
-    const savedWhom = localStorage.getItem("whom");
-    const savedWhy = localStorage.getItem("web_answer_why");
+    const savedLocation = localStorage.getItem(Location);
+    const savedWho = localStorage.getItem(Who);
+    const savedWhom = localStorage.getItem(Whom);
+    const savedWhy = localStorage.getItem(WebAnswerWhy);
 
     if (savedLocation) setLocation(savedLocation);
     if (savedWho) setWho(savedWho);
@@ -69,7 +76,7 @@ const Page = () => {
     if (child && parent && locationSlug) {
       const constructedSrc = `/memorycards/illustrations/${child}/${child}_${parent}_${locationSlug}.webp`;
       setImageSrc(constructedSrc);
-      localStorage.setItem("imageSrc", constructedSrc);
+      localStorage.setItem(ImageSrc, constructedSrc);
 
       const img = new window.Image();
       img.src = constructedSrc;

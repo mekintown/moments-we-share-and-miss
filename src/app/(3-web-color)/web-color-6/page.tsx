@@ -2,6 +2,10 @@
 
 import NextButton from "@/components/NextButton";
 import { TextAreaWithCounter } from "@/components/TextAreaWithCounter";
+import {
+  WebAnswerColor,
+  WebQuestionColor,
+} from "@/constants/localStorageConstants";
 import { useEffect, useState } from "react";
 
 const colorSlugMap: Record<string, string> = {
@@ -20,12 +24,12 @@ export default function Page() {
   const [color, setColor] = useState<string | null>(null);
 
   useEffect(() => {
-    const savedColor = localStorage.getItem("web_question_color");
+    const savedColor = localStorage.getItem(WebQuestionColor);
     setColor(savedColor);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("web_answer_color", answerColor);
+    localStorage.setItem(WebAnswerColor, answerColor);
   }, [answerColor]);
   return (
     <>

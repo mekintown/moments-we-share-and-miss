@@ -9,6 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Name, Who, Whom } from "@/constants/localStorageConstants";
 import { useState, useEffect } from "react";
 
 const Page = () => {
@@ -18,8 +19,8 @@ const Page = () => {
   const [who, setWho] = useState<string | null>(null);
 
   useEffect(() => {
-    const savedName = localStorage.getItem("name");
-    const savedWho = localStorage.getItem("who");
+    const savedName = localStorage.getItem(Name);
+    const savedWho = localStorage.getItem(Who);
     if (savedName) {
       setName(savedName);
     }
@@ -30,7 +31,7 @@ const Page = () => {
 
   useEffect(() => {
     if (whom) {
-      localStorage.setItem("whom", whom);
+      localStorage.setItem(Whom, whom);
     }
   }, [whom]);
 

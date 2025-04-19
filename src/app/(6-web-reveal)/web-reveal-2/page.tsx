@@ -1,6 +1,10 @@
 "use client";
 
 import NextButton from "@/components/NextButton";
+import {
+  ImageSrc,
+  WebAnswerImportant,
+} from "@/constants/localStorageConstants";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
@@ -9,8 +13,8 @@ const Page = () => {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
 
   useEffect(() => {
-    const savedImportant = localStorage.getItem("web_answer_important");
-    const savedImgSrc = localStorage.getItem("imageSrc");
+    const savedImportant = localStorage.getItem(WebAnswerImportant);
+    const savedImgSrc = localStorage.getItem(ImageSrc);
     setImageSrc(savedImgSrc);
     setAnswerImportant(savedImportant);
   }, []);
