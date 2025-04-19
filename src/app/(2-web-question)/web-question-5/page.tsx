@@ -2,30 +2,25 @@
 
 import NextButton from "@/components/NextButton";
 import { TextAreaWithCounter } from "@/components/TextAreaWithCounter";
+import { Location, WebAnswerWhy } from "@/constants/localStorageConstants";
+import { LocationType } from "@/enums/enums";
+import { locationSlugMap } from "@/lib/slugMap";
 import { useEffect, useState } from "react";
-
-const locationSlugMap: Record<string, string> = {
-  บ้าน: "home",
-  รถ: "car",
-  ทะเล: "beach",
-  โรงเรียน: "school",
-  อื่นๆ: "others",
-};
 
 const Page = () => {
   const [answerWhy, setAnswerWhy] = useState<string>("");
-  const [location, setLocation] = useState<string | null>(null);
+  const [location, setLocation] = useState<LocationType | null>(null);
 
   useEffect(() => {
     if (answerWhy) {
-      localStorage.setItem("web_answer_why", answerWhy);
+      localStorage.setItem(WebAnswerWhy, answerWhy);
     }
   }, [answerWhy]);
 
   useEffect(() => {
-    const savedLocation = localStorage.getItem("location");
-    if (savedLocation) {
-      setLocation(savedLocation);
+    const saved = localStorage.getItem(Location);
+    if (saved) {
+      setLocation(saved as LocationType);
     }
   }, []);
 
@@ -58,4 +53,5 @@ const Page = () => {
     </>
   );
 };
+
 export default Page;

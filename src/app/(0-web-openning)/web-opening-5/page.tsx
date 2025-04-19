@@ -2,13 +2,14 @@
 
 import NextButton from "@/components/NextButton";
 import { Input } from "@/components/ui/input";
+import { Name } from "@/constants/localStorageConstants";
 import { useEffect, useState } from "react";
 
 export default function Page() {
   const [name, setName] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("name", name);
+    localStorage.setItem(Name, name);
   }, [name]);
 
   return (

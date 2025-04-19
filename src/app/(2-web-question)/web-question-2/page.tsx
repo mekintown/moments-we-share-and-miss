@@ -9,22 +9,29 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Name, Who } from "@/constants/localStorageConstants";
+import {
+  PersonType,
+  ParentType,
+  ChildType,
+  GrandChildType,
+  RelativeType,
+} from "@/enums/enums";
+
 import { useState, useEffect } from "react";
 
 const Page = () => {
   const [name, setName] = useState<string | null>(null);
-  const [who, setWho] = useState<string | null>(null);
+  const [who, setWho] = useState<PersonType | null>(null);
 
   useEffect(() => {
-    const savedName = localStorage.getItem("name");
-    if (savedName) {
-      setName(savedName);
-    }
+    const savedName = localStorage.getItem(Name);
+    if (savedName) setName(savedName);
   }, []);
 
   useEffect(() => {
     if (who) {
-      localStorage.setItem("who", who);
+      localStorage.setItem(Who, who);
     }
   }, [who]);
 
@@ -34,23 +41,35 @@ const Page = () => {
         <div className="">ในช่วงเวลานั้น</div>
         <div className="">แวบแรก {name} นึกถึง...</div>
         <div className="py-3">
-          <Select onValueChange={(value) => setWho(value)}>
+          <Select onValueChange={(value) => setWho(value as PersonType)}>
             <SelectTrigger className="border-2 border-main-cream !text-main-cream">
               <SelectValue placeholder="เลือกตัวเลือก" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectItem value="พ่อ">พ่อ</SelectItem>
-                <SelectItem value="แม่">แม่</SelectItem>
-                <SelectItem value="ลูกสาว/หลานสาว">ลูกสาว/หลานสาว</SelectItem>
-                <SelectItem value="ลูกชาย/หลานชาย">ลูกชาย/หลานชาย</SelectItem>
-                <SelectItem value="ลูก/หลาน (ไม่ระบุเพศ)">
-                  ลูก/หลาน (ไม่ระบุเพศ)
-                </SelectItem>
-                <SelectItem value="ยาย/ย่า">ยาย/ย่า</SelectItem>
-                <SelectItem value="ตา/ปู่">ตา/ปู่</SelectItem>
-                <SelectItem value="ป้า">ป้า</SelectItem>
-                <SelectItem value="ลุง">ลุง</SelectItem>
+                {Object.values(ParentType).map((value) => (
+                  <SelectItem key={value} value={value}>
+                    {value}
+                  </SelectItem>
+                ))}
+
+                {Object.values(ChildType).map((value) => (
+                  <SelectItem key={value} value={value}>
+                    {value}
+                  </SelectItem>
+                ))}
+
+                {Object.values(GrandChildType).map((value) => (
+                  <SelectItem key={value} value={value}>
+                    {value}
+                  </SelectItem>
+                ))}
+
+                {Object.values(RelativeType).map((value) => (
+                  <SelectItem key={value} value={value}>
+                    {value}
+                  </SelectItem>
+                ))}
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -62,4 +81,5 @@ const Page = () => {
     </>
   );
 };
+
 export default Page;

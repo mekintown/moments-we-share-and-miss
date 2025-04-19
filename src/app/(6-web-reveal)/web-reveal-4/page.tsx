@@ -3,14 +3,15 @@
 import NextButton from "@/components/NextButton";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { ImageSrc, WebQuestionSound } from "@/constants/localStorageConstants";
 
 const Page = () => {
   const [answerSound, setAnswerSound] = useState<string | null>(null);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
 
   useEffect(() => {
-    const savedAnswerSound = localStorage.getItem("web_question_sound");
-    const savedImgSrc = localStorage.getItem("imageSrc");
+    const savedAnswerSound = localStorage.getItem(WebQuestionSound);
+    const savedImgSrc = localStorage.getItem(ImageSrc);
     setImageSrc(savedImgSrc);
     setAnswerSound(savedAnswerSound);
   }, []);

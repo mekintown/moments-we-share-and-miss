@@ -1,96 +1,70 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { WebQuestionColor, Name } from "@/constants/localStorageConstants";
+import { WebColor } from "@/enums/enums";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Page() {
-  const [name, setName] = useState<string | null>("");
-  const [color, setColor] = useState("");
+  const [name, setName] = useState<string>("คุณ");
+  const [color, setColor] = useState<WebColor>(WebColor.Red);
 
   useEffect(() => {
-    localStorage.setItem("web_question_color", color ?? "");
-    setName(localStorage.getItem("name"));
+    const saved = localStorage.getItem(Name);
+    if (saved) setName(saved);
+  }, []);
+
+  useEffect(() => {
+    if (color) localStorage.setItem(WebQuestionColor, color);
   }, [color]);
 
+  const colorOptions: {
+    key: WebColor;
+    label: string;
+    className: string;
+  }[] = [
+    {
+      key: WebColor.Red,
+      label: "แดง",
+      className: "bg-sub-red text-main-cream",
+    },
+    {
+      key: WebColor.Orange,
+      label: "ส้ม",
+      className: "bg-sub-orange text-main-cream",
+    },
+    { key: WebColor.Yellow, label: "เหลือง", className: "bg-sub-yellow" },
+    {
+      key: WebColor.Green,
+      label: "เขียว",
+      className: "bg-sub-green text-main-cream",
+    },
+    { key: WebColor.Blue, label: "ฟ้า", className: "bg-sub-blue" },
+    { key: WebColor.Purple, label: "ม่วง", className: "bg-sub-purple" },
+    { key: WebColor.Pink, label: "ชมพู", className: "bg-sub-pink" },
+    { key: WebColor.White, label: "ขาว", className: "bg-main-cream" },
+  ];
+
   return (
-    <div className="w-full row-span-4 text-center text-subheader space-y-4">
-      <div className="text-main-cream ">
-        <div className="text-nowrap">ถ้าให้ลองนึกย้อนกลับไป ณ เวลานั้น</div>
-        <div className="">{name}</div>
-        <div className="">เห็นมันเป็นสีอะไรหรอ?</div>
+    <div className="text-center text-subheader space-y-4">
+      <div className="text-main-cream">
+        <div>ถ้าให้ลองนึกย้อนกลับไป ณ เวลานั้น</div>
+        <div>{name}</div>
+        <div>เห็นมันเป็นสีอะไรหรอ?</div>
       </div>
-      <div className="grid grid-cols-2 gap-4 px-17">
-        <Link href="/web-color-6">
-          <Button
-            className="bg-sub-red text-main-cream w-full"
-            onClick={() => {
-              setColor("แดง");
-            }}
-          >
-            แดง
-          </Button>
-        </Link>
-        <Link href="/web-color-6">
-          <Button
-            className="bg-sub-orange text-main-cream w-full"
-            onClick={() => {
-              setColor("ส้ม");
-            }}
-          >
-            ส้ม
-          </Button>
-        </Link>
-        <Link href="/web-color-6">
-          <Button
-            className="bg-sub-yellow w-full"
-            onClick={() => {
-              setColor("เหลือง");
-            }}
-          >
-            เหลือง
-          </Button>
-        </Link>
-        <Link
-          href="/web-color-6"
-          onClick={() => {
-            setColor("เขียว");
-          }}
-        >
-          <Button className="bg-sub-green text-main-cream w-full">เขียว</Button>
-        </Link>
-        <Link
-          href="/web-color-6"
-          onClick={() => {
-            setColor("ฟ้า");
-          }}
-        >
-          <Button className="bg-sub-blue w-full">ฟ้า</Button>
-        </Link>
-        <Link
-          href="/web-color-6"
-          onClick={() => {
-            setColor("ม่วง");
-          }}
-        >
-          <Button className="bg-sub-purple w-full">ม่วง</Button>
-        </Link>
-        <Link
-          href="/web-color-6"
-          onClick={() => {
-            setColor("ชมพู");
-          }}
-        >
-          <Button className="bg-sub-pink w-full">ชมพู</Button>
-        </Link>
-        <Link
-          href="/web-color-6"
-          onClick={() => {
-            setColor("ขาว");
-          }}
-        >
-          <Button className="bg-main-cream w-full">ขาว</Button>
-        </Link>
+
+      <div className="grid grid-cols-2 gap-5 px-17">
+        {colorOptions.map(({ key, label, className }) => (
+          <Link key={key} href="/web-color-6">
+            <Button
+              className={`${className} w-full`}
+              onClick={() => setColor(key)}
+            >
+              {label}
+            </Button>
+          </Link>
+        ))}
       </div>
     </div>
   );

@@ -9,32 +9,51 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Name, Who, Whom } from "@/constants/localStorageConstants";
+import {
+  ParentType,
+  RelativeType,
+  ChildType,
+  GrandChildType,
+  PersonType,
+} from "@/enums/enums"; // adjust path
 import { useState, useEffect } from "react";
 
 const Page = () => {
-  const parent = ["พ่อ", "แม่", "ยาย/ย่า", "ตา/ปู่", "ป้า", "ลุง"];
   const [name, setName] = useState<string | null>(null);
-  const [whom, setWhom] = useState<string | null>(null);
-  const [who, setWho] = useState<string | null>(null);
+  const [who, setWho] = useState<PersonType | null>(null);
+  const [whom, setWhom] = useState<PersonType | null>(null);
 
   useEffect(() => {
-    const savedName = localStorage.getItem("name");
-    const savedWho = localStorage.getItem("who");
-    if (savedName) {
-      setName(savedName);
-    }
+    const savedName = localStorage.getItem(Name);
+    const savedWho = localStorage.getItem(Who);
+
+    if (savedName) setName(savedName);
     if (savedWho) {
-      setWho(savedWho);
+      setWho(savedWho as PersonType);
     }
   }, []);
 
   useEffect(() => {
     if (whom) {
-      localStorage.setItem("whom", whom);
+      localStorage.setItem(Whom, whom);
     }
   }, [whom]);
 
-  const isParentCategory = who && parent.includes(who);
+  const isParentOrRelative =
+    who &&
+    (Object.values(ParentType).includes(who as ParentType) ||
+      Object.values(RelativeType).includes(who as RelativeType));
+
+  const childAndGrandOptions = [
+    ...Object.values(ChildType),
+    ...Object.values(GrandChildType),
+  ];
+
+  const parentAndRelativeOptions = [
+    ...Object.values(ParentType),
+    ...Object.values(RelativeType),
+  ];
 
   return (
     <>
@@ -43,38 +62,23 @@ const Page = () => {
         <div className="">{name} กับคนที่นึกถึง</div>
         <div className="">เป็นแบบไหนกันนะ</div>
         <div className="py-3 ">
-          {isParentCategory ? (
-            <Select onValueChange={(value) => setWhom(value)}>
-              <SelectTrigger className="border-2 border-main-cream !text-main-cream">
-                <SelectValue placeholder="เลือกตัวเลือก" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="ลูกสาว/หลานสาว">ลูกสาว/หลานสาว</SelectItem>
-                  <SelectItem value="ลูกชาย/หลานชาย">ลูกชาย/หลานชาย</SelectItem>
-                  <SelectItem value="ลูก/หลาน (ไม่ระบุเพศ)">
-                    ลูก/หลาน (ไม่ระบุเพศ)
+          <Select onValueChange={(value) => setWhom(value as PersonType)}>
+            <SelectTrigger className="border-2 border-main-cream !text-main-cream">
+              <SelectValue placeholder="เลือกตัวเลือก" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {(isParentOrRelative
+                  ? childAndGrandOptions
+                  : parentAndRelativeOptions
+                ).map((value) => (
+                  <SelectItem key={value} value={value}>
+                    {value}
                   </SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          ) : (
-            <Select onValueChange={(value) => setWhom(value)}>
-              <SelectTrigger className="border-2 border-main-cream text-main-cream">
-                <SelectValue placeholder="" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="พ่อ">พ่อ</SelectItem>
-                  <SelectItem value="แม่">แม่</SelectItem>
-                  <SelectItem value="ยาย/ย่า">ยาย/ย่า</SelectItem>
-                  <SelectItem value="ตา/ปู่">ตา/ปู่</SelectItem>
-                  <SelectItem value="ป้า">ป้า</SelectItem>
-                  <SelectItem value="ลุง">ลุง</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          )}
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </div>
       </div>
       <div className="row-start-4 ">
@@ -83,4 +87,5 @@ const Page = () => {
     </>
   );
 };
+
 export default Page;

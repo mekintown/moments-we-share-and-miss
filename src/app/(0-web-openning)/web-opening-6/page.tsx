@@ -10,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Age, Gender } from "@/constants/localStorageConstants";
 import { useEffect, useState } from "react";
 
 export default function Page() {
@@ -30,10 +31,10 @@ export default function Page() {
 
   useEffect(() => {
     if (isValidAge(age)) {
-      localStorage.setItem("age", age);
+      localStorage.setItem(Age, age);
     }
     if (gender) {
-      localStorage.setItem("gender", gender);
+      localStorage.setItem(Gender, gender);
     }
   }, [age, gender]);
 

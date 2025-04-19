@@ -9,32 +9,36 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Location } from "@/constants/localStorageConstants";
+import { LocationType } from "@/enums/enums";
 import { useEffect, useState } from "react";
 
 const Page = () => {
-  const [location, setLocation] = useState<string | null>(null);
+  const [location, setLocation] = useState<LocationType | null>(null);
+
   useEffect(() => {
     if (location) {
-      localStorage.setItem("location", location);
+      localStorage.setItem(Location, location);
     }
   }, [location]);
+
   return (
     <>
       <div className="row-start-2 row-span-2 text-center text-subheader text-main-cream space-y-3">
         <div className="">แล้วช่วงเวลานั้น เกิดขึ้น...</div>
         <div className="flex justify-center items-center gap-2">
           <span>ที่</span>
-          <Select onValueChange={(value) => setLocation(value)}>
+          <Select onValueChange={(value) => setLocation(value as LocationType)}>
             <SelectTrigger className="border-2 border-main-cream text-main-cream">
               <SelectValue placeholder="" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectItem value="บ้าน">บ้าน</SelectItem>
-                <SelectItem value="รถ">รถ</SelectItem>
-                <SelectItem value="ทะเล">ทะเล</SelectItem>
-                <SelectItem value="โรงเรียน">โรงเรียน</SelectItem>
-                <SelectItem value="อื่นๆ">อื่นๆ</SelectItem>
+                {Object.values(LocationType).map((value) => (
+                  <SelectItem key={value} value={value}>
+                    {value}
+                  </SelectItem>
+                ))}
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -53,4 +57,5 @@ const Page = () => {
     </>
   );
 };
+
 export default Page;
