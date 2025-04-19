@@ -1,12 +1,12 @@
 export enum WebColor {
-  Red = "red",
-  Orange = "orange",
-  Yellow = "yellow",
-  Green = "green",
-  Blue = "blue",
-  Purple = "purple",
-  Pink = "pink",
-  White = "white",
+  Red = "แดง",
+  Orange = "ส้ม",
+  Yellow = "เหลือง",
+  Green = "เขียว",
+  Blue = "ฟ้า",
+  Purple = "ม่วง",
+  Pink = "ชมพู",
+  White = "ขาว",
 }
 
 export enum LocationType {
