@@ -42,3 +42,20 @@ export enum RelativeType {
 }
 
 export type PersonType = ParentType | ChildType | GrandChildType | RelativeType;
+
+export interface UserData {
+  name: string;
+  age: string;
+  gender: string;
+  web_question_color: string;
+  web_answer_color: string;
+  missed_person: string;
+  missed_person_relationship: string;
+  location: string;
+  web_answer_why: string;
+  web_question_sound: string;
+  web_answer_important: string;
+  consent: string;
+  email_contact: string;
+  pair_id?: string | null;
+}

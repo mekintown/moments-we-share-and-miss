@@ -9,7 +9,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Name, Who, Whom } from "@/constants/localStorageConstants";
+import {
+  Name,
+  MissedPerson,
+  MissedPersonRelationShip,
+} from "@/constants/localStorageConstants";
 import {
   ParentType,
   RelativeType,
@@ -26,7 +30,7 @@ const Page = () => {
 
   useEffect(() => {
     const savedName = localStorage.getItem(Name);
-    const savedWho = localStorage.getItem(Who);
+    const savedWho = localStorage.getItem(MissedPerson);
 
     if (savedName) setName(savedName);
     if (savedWho) {
@@ -36,7 +40,7 @@ const Page = () => {
 
   useEffect(() => {
     if (whom) {
-      localStorage.setItem(Whom, whom);
+      localStorage.setItem(MissedPersonRelationShip, whom);
     }
   }, [whom]);
 
