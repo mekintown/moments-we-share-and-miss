@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Name, Who } from "@/constants/localStorageConstants";
+import { Name, MissedPerson } from "@/constants/localStorageConstants";
 import {
   PersonType,
   ParentType,
@@ -31,7 +31,7 @@ const Page = () => {
 
   useEffect(() => {
     if (who) {
-      localStorage.setItem(Who, who);
+      localStorage.setItem(MissedPerson, who);
     }
   }, [who]);
 

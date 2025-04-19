@@ -2,7 +2,24 @@
 
 import NextButton from "@/components/NextButton";
 import { TextAreaWithCounter } from "@/components/TextAreaWithCounter";
-import { Name, WebQuestionSound } from "@/constants/localStorageConstants";
+import {
+  Age,
+  Consent,
+  EmailContact,
+  Gender,
+  Location,
+  MissedPerson,
+  MissedPersonRelationShip,
+  Name,
+  Sender,
+  WebAnswerColor,
+  WebAnswerImportant,
+  WebAnswerWhy,
+  WebQuestionColor,
+  WebQuestionSound,
+} from "@/constants/localStorageConstants";
+import { UserData } from "@/enums/enums";
+import router from "next/router";
 import { useEffect, useState } from "react";
 
 const Page = () => {
@@ -12,6 +29,45 @@ const Page = () => {
     localStorage.setItem(WebQuestionSound, answerSound);
     setName(localStorage.getItem(Name));
   }, [answerSound]);
+
+  const handleNext = async () => {
+    const userData: UserData = {
+      name: localStorage.getItem(Name) ?? "",
+      age: localStorage.getItem(Age) ?? "",
+      gender: localStorage.getItem(Gender) ?? "",
+      web_question_color: localStorage.getItem(WebQuestionColor) ?? "",
+      web_answer_color: localStorage.getItem(WebAnswerColor) ?? "",
+      missed_person: localStorage.getItem(MissedPerson) ?? "",
+      missed_person_relationship:
+        localStorage.getItem(MissedPersonRelationShip) ?? "",
+      location: localStorage.getItem(Location) ?? "",
+      web_answer_why: localStorage.getItem(WebAnswerWhy) ?? "",
+      web_question_sound: localStorage.getItem(WebQuestionSound) ?? "",
+      web_answer_important: localStorage.getItem(WebAnswerImportant) ?? "",
+      sender: localStorage.getItem(Sender) ?? null,
+      consent: localStorage.getItem(Consent) ?? "",
+      email_contact: localStorage.getItem(EmailContact) ?? "",
+    };
+
+    try {
+      const res = await fetch("/api/add-user-data", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        console.error("Server error:", err.message);
+        return;
+      }
+
+      console.log("User data saved");
+      router.push("/web-transition-1");
+    } catch (e) {
+      console.error("Network error:", e);
+    }
+  };
 
   return (
     <>
@@ -37,6 +93,7 @@ const Page = () => {
           url={`/web-transition-1`}
           label="ต่อไป"
           disabled={answerSound === ""}
+          onClick={handleNext}
         />
       </div>
     </>

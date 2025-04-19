@@ -13,8 +13,8 @@ import {
   WebQuestionColor,
   WebAnswerColor,
   WebQuestionSound,
-  Who,
-  Whom,
+  MissedPerson,
+  MissedPersonRelationShip,
 } from "@/constants/localStorageConstants";
 
 import { LocationType, PersonType } from "@/enums/enums";
@@ -39,8 +39,10 @@ const RevealSequence = () => {
 
   useEffect(() => {
     setLocation(localStorage.getItem(Location) as LocationType | null);
-    setWho(localStorage.getItem(Who) as PersonType | null);
-    setWhom(localStorage.getItem(Whom) as PersonType | null);
+    setWho(localStorage.getItem(MissedPerson) as PersonType | null);
+    setWhom(
+      localStorage.getItem(MissedPersonRelationShip) as PersonType | null
+    );
     setWhy(localStorage.getItem(WebAnswerWhy));
 
     setAnswerImportant(localStorage.getItem(WebAnswerImportant));
