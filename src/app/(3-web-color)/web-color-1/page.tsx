@@ -1,14 +1,15 @@
 "use client";
 
 import NextButton from "@/components/NextButton";
+import { Name } from "@/constants/localStorageConstants";
 import { useEffect, useState } from "react";
 
 export default function Page() {
   const [name, setName] = useState<string | null>(null);
 
   useEffect(() => {
-    const savedColor = localStorage.getItem("name");
-    setName(savedColor);
+    const savedName = localStorage.getItem(Name);
+    setName(savedName);
   }, []);
 
   return (

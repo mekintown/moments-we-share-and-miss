@@ -1,12 +1,13 @@
 "use client";
 import NextButton from "@/components/NextButton";
+import { Color } from "@/constants/localStorageConstants";
 import { PropsWithChildren, useEffect, useState } from "react";
 
 const WebColorLayout = ({ children }: PropsWithChildren) => {
   const [color, setColor] = useState<string | null>(null);
 
   useEffect(() => {
-    const savedColor = localStorage.getItem("color");
+    const savedColor = localStorage.getItem(Color);
     setColor(savedColor);
   }, []);
 

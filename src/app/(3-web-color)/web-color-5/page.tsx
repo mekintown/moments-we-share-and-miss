@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Color } from "@/constants/localStorageConstants";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -8,7 +9,7 @@ export default function Page() {
   const name = "PLACEHOLDER";
   const [color, setColor] = useState("");
   useEffect(() => {
-    localStorage.setItem("color", color ?? "");
+    localStorage.setItem(Color, color ?? "");
   }, [color]);
   return (
     <div className="text-center text-subheader space-y-4">

@@ -1,13 +1,14 @@
 "use client";
 
 import { TextAreaWithCounter } from "@/components/TextAreaWithCounter";
+import { Reason } from "@/constants/localStorageConstants";
 import { useEffect, useState } from "react";
 
 export default function Page() {
   const [reason, setReason] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("reason", reason);
+    localStorage.setItem(Reason, reason);
   }, [reason]);
   return (
     <>

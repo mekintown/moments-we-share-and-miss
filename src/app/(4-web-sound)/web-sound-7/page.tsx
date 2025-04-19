@@ -1,14 +1,15 @@
 "use client";
 
 import { TextAreaWithCounter } from "@/components/TextAreaWithCounter";
+import { Name, Sound } from "@/constants/localStorageConstants";
 import { useEffect, useState } from "react";
 
 export default function Page() {
   const [sound, setSound] = useState("");
   const [name, setName] = useState<string | null>("");
   useEffect(() => {
-    localStorage.setItem("sound", sound);
-    setName(localStorage.getItem("name"));
+    localStorage.setItem(Sound, sound);
+    setName(localStorage.getItem(Name));
   }, [sound]);
   return (
     <>

@@ -4,11 +4,12 @@ import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import NextButton from "@/components/NextButton";
+import { Name } from "@/constants/localStorageConstants";
 
 export default function Page() {
   const [name, setName] = useState("");
   useEffect(() => {
-    localStorage.setItem("name", name);
+    localStorage.setItem(Name, name);
   }, [name]);
 
   return (

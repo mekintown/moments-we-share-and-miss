@@ -12,13 +12,14 @@ import {
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import NextButton from "@/components/NextButton";
+import { Age, Gender } from "@/constants/localStorageConstants";
 
 export default function Page() {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   useEffect(() => {
-    localStorage.setItem("age", age);
-    localStorage.setItem("gender", gender);
+    localStorage.setItem(Age, age);
+    localStorage.setItem(Gender, gender);
   }, [age, gender]);
 
   return (
