@@ -47,9 +47,9 @@ export default function Page() {
   ];
 
   return (
-    <div className="text-center text-subheader space-y-4">
+    <div className="w-full row-span-4 text-center text-subheader space-y-4">
       <div className="text-main-cream">
-        <div>ถ้าให้ลองนึกย้อนกลับไป ณ เวลานั้น</div>
+        <div className="text-nowrap">ถ้าให้ลองนึกย้อนกลับไป ณ เวลานั้น</div>
         <div>{name}</div>
         <div>เห็นมันเป็นสีอะไรหรอ?</div>
       </div>

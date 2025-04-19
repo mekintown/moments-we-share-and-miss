@@ -13,8 +13,8 @@ export const parentSlugMap: Partial<Record<PersonType, string>> = {
   [ParentType.Mom]: "mom",
   [RelativeType.Grandma]: "grandma",
   [RelativeType.Grandpa]: "grandpa",
-  [RelativeType.Aunt]: "aunt",
-  [RelativeType.Uncle]: "uncle",
+  [RelativeType.Aunt]: "mom",
+  [RelativeType.Uncle]: "dad",
 };
 
 export const childSlugMap: Partial<Record<PersonType, string>> = {

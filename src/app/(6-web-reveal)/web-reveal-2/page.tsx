@@ -10,13 +10,18 @@ import { useState, useEffect } from "react";
 
 const Page = () => {
   const [answerImportant, setAnswerImportant] = useState<string | null>(null);
-  const [imageSrc, setImageSrc] = useState<string | null>(null);
+  const [imageSrc, setImageSrc] = useState<string>(
+    "/memorycards/illustrations/daughter/daughter_mom_beach.webp"
+  );
 
   useEffect(() => {
     const savedImportant = localStorage.getItem(WebAnswerImportant);
     const savedImgSrc = localStorage.getItem(ImageSrc);
-    setImageSrc(savedImgSrc);
-    setAnswerImportant(savedImportant);
+    if (savedImgSrc) {
+      setImageSrc(savedImgSrc);
+    }
+
+    setAnswerImportant(savedImportant || "12312312");
   }, []);
 
   return (
