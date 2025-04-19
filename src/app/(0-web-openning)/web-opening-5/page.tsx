@@ -2,7 +2,6 @@
 
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import NextButton from "@/components/NextButton";
 import { Name } from "@/constants/localStorageConstants";
 
