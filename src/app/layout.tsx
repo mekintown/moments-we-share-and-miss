@@ -3,6 +3,7 @@ import { Pridi } from "next/font/google";
 import "./globals.css";
 import AnimatedLayout from "@/components/AnimatedLayout";
 import AudioProvider from "@/providers/AudioProvider";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const pridi = Pridi({
   variable: "--font-pridi",
@@ -20,6 +21,7 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => (
   <html lang="th">
+    <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ""} />
     <body
       style={{ fontFamily: "var(--font-pridi), sans-serif" }}
       className={`${pridi.variable}`}
