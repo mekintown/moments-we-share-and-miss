@@ -9,8 +9,9 @@ export const Location = "location";
 export const WebAnswerWhy = "web_answer_why";
 export const WebQuestionSound = "web_question_sound";
 export const WebAnswerImportant = "web_answer_important";
-export const Sender = "sender";
 export const Consent = "consent";
 export const EmailContact = "email_contact";
+export const PairID = "pair_id";
 
+export const userDocRef = "user_doc_ref";
 export const ImageSrc = "imageSrc";

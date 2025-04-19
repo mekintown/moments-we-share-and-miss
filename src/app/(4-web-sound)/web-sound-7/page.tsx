@@ -11,7 +11,8 @@ import {
   MissedPerson,
   MissedPersonRelationShip,
   Name,
-  Sender,
+  PairID,
+  userDocRef,
   WebAnswerColor,
   WebAnswerImportant,
   WebAnswerWhy,
@@ -19,7 +20,6 @@ import {
   WebQuestionSound,
 } from "@/constants/localStorageConstants";
 import { UserData } from "@/enums/enums";
-import router from "next/router";
 import { useEffect, useState } from "react";
 
 const Page = () => {
@@ -44,9 +44,9 @@ const Page = () => {
       web_answer_why: localStorage.getItem(WebAnswerWhy) ?? "",
       web_question_sound: localStorage.getItem(WebQuestionSound) ?? "",
       web_answer_important: localStorage.getItem(WebAnswerImportant) ?? "",
-      sender: localStorage.getItem(Sender) ?? null,
       consent: localStorage.getItem(Consent) ?? "",
       email_contact: localStorage.getItem(EmailContact) ?? "",
+      pair_id: localStorage.getItem(PairID) ?? null,
     };
 
     try {
@@ -62,8 +62,9 @@ const Page = () => {
         return;
       }
 
-      console.log("User data saved");
-      router.push("/web-transition-1");
+      const { id } = await res.json();
+
+      localStorage.setItem(userDocRef, id);
     } catch (e) {
       console.error("Network error:", e);
     }

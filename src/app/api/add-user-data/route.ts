@@ -15,7 +15,7 @@ const REQUIRED_FIELDS: (keyof UserData)[] = [
   "web_answer_why",
   "web_question_sound",
   "web_answer_important",
-  "sender",
+  "pair_id",
 ];
 
 export const POST = async (req: NextRequest) => {
@@ -38,11 +38,14 @@ export const POST = async (req: NextRequest) => {
       createdAt: serverTimestamp(),
     });
 
-    return NextResponse.json({
-      success: true,
-      message: "User data added successfully",
-      id: docRef.id,
-    });
+    return NextResponse.json(
+      {
+        success: true,
+        message: "User data added successfully",
+        id: docRef.id,
+      },
+      { status: 201 }
+    );
   } catch (error) {
     console.error("Error adding user data:", error);
     return NextResponse.json(

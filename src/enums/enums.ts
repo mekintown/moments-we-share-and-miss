@@ -55,7 +55,7 @@ export interface UserData {
   web_answer_why: string;
   web_question_sound: string;
   web_answer_important: string;
-  sender: string | null;
   consent: string;
   email_contact: string;
+  pair_id?: string | null;
 }
