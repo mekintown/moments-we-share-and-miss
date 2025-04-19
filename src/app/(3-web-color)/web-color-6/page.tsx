@@ -7,18 +7,8 @@ import {
   WebQuestionColor,
 } from "@/constants/localStorageConstants";
 import { WebColor } from "@/enums/enums";
+import { colorSlugMap } from "@/lib/slugMap";
 import { useEffect, useState } from "react";
-
-const colorSlugMap: Record<WebColor, string> = {
-  [WebColor.Red]: "red",
-  [WebColor.Orange]: "orange",
-  [WebColor.Yellow]: "yellow",
-  [WebColor.Green]: "green",
-  [WebColor.Blue]: "blue",
-  [WebColor.Purple]: "purple",
-  [WebColor.Pink]: "pink",
-  [WebColor.White]: "white",
-};
 
 export default function Page() {
   const [answerColor, setAnswerColor] = useState("");
@@ -26,10 +16,7 @@ export default function Page() {
 
   useEffect(() => {
     const savedColor = localStorage.getItem(WebQuestionColor);
-    if (
-      savedColor &&
-      Object.values(WebColor).includes(savedColor as WebColor)
-    ) {
+    if (savedColor) {
       setColor(savedColor as WebColor);
     }
   }, []);

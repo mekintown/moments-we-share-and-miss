@@ -8,36 +8,15 @@ import {
   Who,
   Whom,
 } from "@/constants/localStorageConstants";
+import { LocationType, PersonType } from "@/enums/enums";
+import { parentSlugMap, childSlugMap, locationSlugMap } from "@/lib/slugMap";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-const parentSlugMap: Record<string, string> = {
-  พ่อ: "dad",
-  แม่: "mom",
-  "ยาย/ย่า": "grandma",
-  "ตา/ปู่": "grandpa",
-  ป้า: "mom",
-  ลุง: "dad",
-};
-
-const childSlugMap: Record<string, string> = {
-  "ลูกสาว/หลานสาว": "daughter",
-  "ลูกชาย/หลานชาย": "son",
-  "ลูก/หลาน (ไม่ระบุเพศ)": "nonbi",
-};
-
-const locationSlugMap: Record<string, string> = {
-  บ้าน: "home",
-  รถ: "car",
-  ทะเล: "beach",
-  โรงเรียน: "school",
-  อื่นๆ: "others",
-};
-
 const Page = () => {
-  const [location, setLocation] = useState<string | null>(null);
-  const [who, setWho] = useState<string | null>(null);
-  const [whom, setWhom] = useState<string | null>(null);
+  const [location, setLocation] = useState<LocationType | null>(null);
+  const [who, setWho] = useState<PersonType | null>(null);
+  const [whom, setWhom] = useState<PersonType | null>(null);
   const [why, setWhy] = useState<string | null>(null);
   const [imageSrc, setImageSrc] = useState<string>("");
 
@@ -47,29 +26,28 @@ const Page = () => {
     const savedWhom = localStorage.getItem(Whom);
     const savedWhy = localStorage.getItem(WebAnswerWhy);
 
-    if (savedLocation) setLocation(savedLocation);
-    if (savedWho) setWho(savedWho);
-    if (savedWhom) setWhom(savedWhom);
+    if (savedLocation) {
+      setLocation(savedLocation as LocationType);
+    }
+
+    if (savedWho) {
+      setWho(savedWho as PersonType);
+    }
+
+    if (savedWhom) {
+      setWhom(savedWhom as PersonType);
+    }
+
     if (savedWhy) setWhy(savedWhy);
   }, []);
 
   useEffect(() => {
     if (!who || !whom || !location) return;
 
-    let parent = "";
-    let child = "";
-
-    if (parentSlugMap[who]) {
-      parent = parentSlugMap[who];
-    } else if (childSlugMap[who]) {
-      child = childSlugMap[who];
-    }
-
-    if (parentSlugMap[whom]) {
-      parent = parentSlugMap[whom];
-    } else if (childSlugMap[whom]) {
-      child = childSlugMap[whom];
-    }
+    const [parent, child] =
+      parentSlugMap[who] && childSlugMap[whom]
+        ? [parentSlugMap[who], childSlugMap[whom]]
+        : [parentSlugMap[whom], childSlugMap[who]];
 
     const locationSlug = locationSlugMap[location] ?? "";
 
@@ -96,7 +74,6 @@ const Page = () => {
           />
         )}
 
-        {/* TODO: Animate this one after another */}
         <div>เรา...</div>
         <div>
           อยู่ที่ {location} กับ {who}
@@ -115,4 +92,5 @@ const Page = () => {
     </>
   );
 };
+
 export default Page;
