@@ -41,7 +41,6 @@ const AnimatedVideo = ({
       )}
 
       <video
-        muted
         playsInline
         autoPlay
         onEnded={onEnd}
