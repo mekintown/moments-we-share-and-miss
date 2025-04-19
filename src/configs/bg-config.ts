@@ -338,6 +338,11 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
   "web-conclusion-7": {
     image: "/animations/transitions/conclusion/conclusion7.mp4",
     video: true,
+    imagesPreload: ["/illustrations/letter.mp4"],
+  },
+  "web-ending-1": {
+    image: "/illustrations/letter.mp4",
+    video: true,
     imagesPreload: [],
   },
 } as const;

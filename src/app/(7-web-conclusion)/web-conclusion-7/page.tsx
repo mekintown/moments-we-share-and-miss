@@ -10,7 +10,7 @@ const Page = () => {
         <NextButton
           variant="ghost"
           label="แตะเพื่อไปต่อ"
-          url="/web-letter"
+          url="/web-ending-1"
           className="text-remark text-main-cream opacity-60 hover:opacity-100 hover:text-main-cream hover:bg-transparent"
         />
       </div>
