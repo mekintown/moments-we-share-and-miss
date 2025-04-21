@@ -19,11 +19,11 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
   },
   "web-opening-2": {
     image: "/backgrounds/main-background.gif",
-    imagesPreload: [],
+    imagesPreload: ["/illustrations/ios1.webp", "/illustrations/ios2.webp"],
   },
   "web-opening-3": {
     image: "/backgrounds/main-background.gif",
-    imagesPreload: ["/illustrations/ios1.webp", "/illustrations/ios2.webp"],
+    imagesPreload: [],
   },
   "web-opening-4": {
     image: "/backgrounds/main-background.gif",
