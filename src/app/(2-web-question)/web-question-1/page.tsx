@@ -1,6 +1,5 @@
 "use client";
 
-import NextButton from "@/components/NextButton";
 import PageWithTapToNext from "@/components/PageWithTapToNext";
 
 const Page = () => {

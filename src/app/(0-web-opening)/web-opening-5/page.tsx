@@ -23,7 +23,7 @@ export default function Page() {
           </div>
           <div className="">
             <Input
-              type="email"
+              type="input"
               className="text-main-cream border-2 border-main-cream"
               onChange={(e) => {
                 setName(e.target.value);

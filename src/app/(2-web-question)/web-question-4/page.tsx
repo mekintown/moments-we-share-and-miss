@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select";
 import { Location } from "@/constants/localStorageConstants";
 import { LocationType } from "@/enums/enums";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const Page = () => {
@@ -46,12 +47,18 @@ const Page = () => {
       </div>
       <div className="row-start-4 ">
         {location && (
-          <NextButton
-            variant="ghost"
-            label="แตะเพื่อไปต่อ"
-            url="web-question-5"
-            className="text-remark text-main-cream opacity-60 hover:opacity-100 hover:text-main-cream hover:bg-transparent"
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2 }}
+          >
+            <NextButton
+              variant="ghost"
+              label="แตะเพื่อไปต่อ"
+              url="web-question-5"
+              className="text-remark text-main-cream opacity-60 hover:opacity-100 hover:text-main-cream hover:bg-transparent"
+            />
+          </motion.div>
         )}
       </div>
     </>

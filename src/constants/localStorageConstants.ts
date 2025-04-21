@@ -15,3 +15,6 @@ export const PairID = "pair_id";
 
 export const userDocRef = "user_doc_ref";
 export const ImageSrc = "imageSrc";
+
+export const InstagramURL =
+  "https://www.instagram.com/themomentsweshareandmiss?igsh=MW9zemQ1YXVyZjI0eA%3D%3D&utm_source=qr";
