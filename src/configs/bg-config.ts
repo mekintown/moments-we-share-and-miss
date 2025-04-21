@@ -345,4 +345,32 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
     video: true,
     imagesPreload: [],
   },
+  "web-ending-2": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-ending-3": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-share-1": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-share-2": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-share-3": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: [],
+  },
+  "web-share-4": {
+    image: "/backgrounds/main-background.gif",
+    imagesPreload: ["/logo/logo-full.svg"],
+  },
+  "web-share-5": {
+    image: "/backgrounds/home-background.gif",
+    imagesPreload: [],
+  },
 } as const;

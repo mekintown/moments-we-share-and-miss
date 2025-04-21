@@ -1,7 +1,6 @@
 import { PropsWithChildren } from "react";
 import Image from "next/image";
 import NextButton from "@/components/NextButton";
-import Link from "next/link";
 
 const WebOpeningLayout = ({ children }: PropsWithChildren) => {
   return (
