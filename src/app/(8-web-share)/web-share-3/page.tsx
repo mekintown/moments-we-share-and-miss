@@ -15,21 +15,9 @@ const Page = () => {
     if (savedUserRefId) setUserRefId(savedUserRefId);
   }, []);
 
-  const copyUniqueLink = async () => {
+  const copyLink = async (link: string) => {
     try {
-      await navigator.clipboard.writeText(
-        `https://www.themomentsweshareandmiss.com/join/${userRefId}`
-      );
-    } catch (err) {
-      console.error("Failed to copy:", err);
-    }
-  };
-
-  const copyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(
-        "https://www.themomentsweshareandmiss.com/"
-      );
+      await navigator.clipboard.writeText(link);
     } catch (err) {
       console.error("Failed to copy:", err);
     }
@@ -47,7 +35,11 @@ const Page = () => {
           <Button
             variant={"outline"}
             className="bg-transparent border-main-yellow text-main-yellow hover:bg-transparent hover:text-main-yellow"
-            onClick={copyUniqueLink}
+            onClick={() => {
+              copyLink(
+                `https://www.themomentsweshareandmiss.com/join/${userRefId}`
+              );
+            }}
           >
             คัดลอกลิ้งค์
           </Button>
@@ -56,7 +48,12 @@ const Page = () => {
           <div className="">หมายเหตุ: หากอยากให้เพื่อน ๆ</div>
           <div className="">แบ่งปันเรื่องราวให้กับเราแชร์ลิงก์</div>
           <div className="text-nowrap">
-            <span className="underline" onClick={copyLink}>
+            <span
+              className="underline"
+              onClick={() => {
+                copyLink("https://www.themomentsweshareandmiss.com/");
+              }}
+            >
               www.themomentsweshareandmiss.com
             </span>
             ได้เลย
