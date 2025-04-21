@@ -287,7 +287,6 @@ export const backgroundMapConfig: Record<string, BackgroundConfig> = {
   "web-transition-9": {
     image: "/backgrounds/main-background.gif",
     imagesPreload: [],
-    redirectTo: "web-reveal-1",
   },
   "web-reveal-1": {
     image: "/backgrounds/main-background.gif",

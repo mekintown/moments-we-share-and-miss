@@ -13,7 +13,7 @@ const Page = () => {
   }, []);
 
   return (
-    <PageWithTapToNext nextUrl="web-transition-momentwemiss">
+    <PageWithTapToNext nextUrl="web-reveal-1">
       <div className="row-start-2 row-span-2 text-center items-center text-subheader text-main-cream">
         <div className="">นี่คือความทรงจำของ</div>
         <div className="">{name}</div>

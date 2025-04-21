@@ -14,7 +14,7 @@ const Page = () => {
   }, []);
 
   return (
-    <PageWithTapToNext nextUrl="web-transition-9">
+    <PageWithTapToNext nextUrl="web-transition-momentswemiss">
       <div className="row-start-2 row-span-2 text-center items-center text-subheader text-main-cream">
         <div className="">ทั้งภาพและเสียงที่</div>
         <div className="">{name} นึกถึง</div>
