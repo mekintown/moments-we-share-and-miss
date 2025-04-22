@@ -99,7 +99,7 @@ const RevealSequence = () => {
 
   return (
     <>
-      <div className=" absolute top-2  p-10 flex flex-col items-center text-main-cream text-subheader">
+      <div className=" absolute top-6  p-10 flex flex-col items-center text-main-cream text-subheader">
         <Image
           src={imageSrc}
           alt="memory"
