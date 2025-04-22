@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import NextButton from "@/components/NextButton";
@@ -37,7 +37,7 @@ const RevealSequence = () => {
     "/memorycards/illustrations/daughter/daughter_mom_beach.webp"
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setLocation(localStorage.getItem(Location) as LocationType | null);
     setWho(localStorage.getItem(MissedPerson) as PersonType | null);
     setWhom(
@@ -49,19 +49,17 @@ const RevealSequence = () => {
     setColor(localStorage.getItem(WebQuestionColor));
     setColorAnswer(localStorage.getItem(WebAnswerColor));
     setAnswerSound(localStorage.getItem(WebQuestionSound));
-
-    const savedImg = localStorage.getItem(ImageSrc);
-    if (savedImg) setImageSrc(savedImg);
   }, []);
 
-  useEffect(() => {
-    if (!imageSrc && location && who && whom) {
+  useLayoutEffect(() => {
+    if (imageSrc && location && who && whom) {
       const [parent, child] =
         parentSlugMap[who] && childSlugMap[whom]
           ? [parentSlugMap[who], childSlugMap[whom]]
           : [parentSlugMap[whom], childSlugMap[who]];
 
       const locSlug = locationSlugMap[location];
+      console.log(parent, child, locSlug);
       if (parent && child && locSlug) {
         const constructed = `/memorycards/illustrations/${child}/${child}_${parent}_${locSlug}.webp`;
         setImageSrc(constructed);
