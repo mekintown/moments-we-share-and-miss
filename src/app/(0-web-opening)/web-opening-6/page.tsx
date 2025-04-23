@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Age, Gender } from "@/constants/localStorageConstants";
+import { Headphones } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function Page() {
@@ -40,8 +41,8 @@ export default function Page() {
 
   return (
     <>
-      <div className="row-start-2">
-        <div className="row-span-2 text-center text-body space-y-5">
+      <div className="row-start-2 row-span-2">
+        <div className=" text-center text-body space-y-5">
           <div className="text-subheader text-main-cream">อายุ</div>
           <div className="">
             <Input
@@ -57,7 +58,7 @@ export default function Page() {
           <div className="">
             <Select onValueChange={(value) => setGender(value)}>
               <SelectTrigger className="border-2 border-main-cream text-main-cream">
-                <SelectValue placeholder="" />
+                <SelectValue placeholder="เลือกตัวเลือก" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
@@ -70,12 +71,23 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <div className="row-start-4">
-        <NextButton
-          label="เริ่มต้น"
-          url="/web-intro-1"
-          disabled={age === "" || gender === ""}
-        />
+
+      <div className="row-start-4  h-full w-full">
+        <div className="grid grid-rows-3 h-full justify-center items-center">
+          <div className="text-center text-body text-main-cream space-y-1">
+            <div className="flex justify-center text-main-yellow">
+              <Headphones />
+            </div>
+            <div className="">เปิดเสียงเพื่อประสบการณ์การที่ดีที่สุด</div>
+          </div>
+          <div className="row-start-2 ">
+            <NextButton
+              label="เริ่มต้น"
+              url="/web-intro-1"
+              disabled={age === "" || gender === ""}
+            />
+          </div>
+        </div>
       </div>
     </>
   );

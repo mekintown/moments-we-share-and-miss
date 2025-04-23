@@ -17,7 +17,7 @@ export default function Page() {
         <div className="text-main-cream ">
           <div className="">เราเชื่อว่าความทรงจำนี้</div>
           <div className="">ต้องมีความหมายกับ</div>
-          <div className="">{name} มากแน่ๆ</div>
+          <div className="">{name} มากแน่ ๆ</div>
         </div>
       </div>
     </PageWithTapToNext>
