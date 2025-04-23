@@ -73,7 +73,7 @@
   --main-yellow: rgb(236, 221, 162);
   --main-cream: rgb(239, 227, 203);
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: rgb(48 66 66);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
