@@ -41,7 +41,7 @@ const Page = () => {
               );
             }}
           >
-            คัดลอกลิ้งค์
+            คัดลอกลิ้งก์
           </Button>
         </div>
         <div className="text-remark">
