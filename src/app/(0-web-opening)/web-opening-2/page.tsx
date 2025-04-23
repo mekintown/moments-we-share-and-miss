@@ -13,7 +13,7 @@ export default function Page() {
           height={78}
         />
       </div>
-      <div className="row-span-2 row-start-2 overflow-auto">
+      <div className="row-span-2 row-start-2 overflow-auto self-start">
         <div className="text-body space-y-2">
           <Separator className="bg-main-yellow" />
           <div className="text-main-cream text-center">

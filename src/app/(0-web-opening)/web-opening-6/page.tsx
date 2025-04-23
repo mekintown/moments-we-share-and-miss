@@ -57,7 +57,7 @@ export default function Page() {
           <div className="">
             <Select onValueChange={(value) => setGender(value)}>
               <SelectTrigger className="border-2 border-main-cream text-main-cream">
-                <SelectValue placeholder="" />
+                <SelectValue placeholder="เลือกตัวเลือก" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
