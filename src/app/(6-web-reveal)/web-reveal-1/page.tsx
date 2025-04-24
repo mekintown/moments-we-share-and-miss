@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import NextButton from "@/components/NextButton";
@@ -59,7 +59,7 @@ const RevealSequence = () => {
           : [parentSlugMap[whom], childSlugMap[who]];
 
       const locSlug = locationSlugMap[location];
-      console.log(parent, child, locSlug);
+
       if (parent && child && locSlug) {
         const constructed = `/memorycards/illustrations/${child}/${child}_${parent}_${locSlug}.webp`;
         setImageSrc(constructed);
@@ -94,6 +94,8 @@ const RevealSequence = () => {
         );
       case 4:
         return <div>เสียงที่เราจำได้คือ {answerSound}</div>;
+      default:
+        return;
     }
   };
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { backgroundMapConfig } from "@/configs/bg-config";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
 import BackgroundLayer from "./BackgroundLayer";

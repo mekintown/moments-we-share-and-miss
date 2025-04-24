@@ -3,7 +3,7 @@ import { db } from "@/lib/firebase-config";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { NextRequest, NextResponse } from "next/server";
 
-const REQUIRED_FIELDS: (keyof UserData)[] = [
+const REQUIRED_FIELDS: Array<keyof UserData> = [
   "name",
   "age",
   "gender",

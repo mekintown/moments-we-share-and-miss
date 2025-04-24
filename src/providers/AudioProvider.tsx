@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import { Howl } from "howler";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { AudioPlayerHandle } from "@/components/AudioPlayer";
 
 const AudioPlayer = dynamic(() => import("@/components/AudioPlayer"), {
@@ -33,7 +33,6 @@ export default function AudioProvider({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const router = useRouter();
 
   const playerRef = useRef<AudioPlayerHandle>(null);
   const howlRef = useRef<Howl | null>(null);

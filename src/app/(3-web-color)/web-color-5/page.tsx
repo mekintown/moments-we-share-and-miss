@@ -19,11 +19,11 @@ export default function Page() {
     if (color) localStorage.setItem(WebQuestionColor, color);
   }, [color]);
 
-  const colorOptions: {
+  const colorOptions: Array<{
     key: WebColor;
     label: string;
     className: string;
-  }[] = [
+  }> = [
     {
       key: WebColor.Red,
       label: "แดง",

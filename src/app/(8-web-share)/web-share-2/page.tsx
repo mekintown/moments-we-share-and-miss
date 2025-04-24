@@ -89,7 +89,7 @@ const Page = () => {
           <Input
             type="email"
             className="text-main-cream border-2 border-main-cream placeholder:text-main-cream"
-            placeholder={consent == "with_email" ? "อีเมล" : "นามสมมติ"}
+            placeholder={consent === "with_email" ? "อีเมล" : "นามสมมติ"}
             onChange={(e) => {
               setEmail(e.target.value);
             }}

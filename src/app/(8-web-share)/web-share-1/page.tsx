@@ -70,7 +70,7 @@ const Page = () => {
       </div>
       <div className="row-start-4">
         <NextButton
-          url={consent != "none" ? "web-share-2" : "web-share-4"}
+          url={consent !== "none" ? "web-share-2" : "web-share-4"}
           label="ต่อไป"
           disabled={consent === ""}
         />
