@@ -1,6 +1,5 @@
 "use client";
 
-import NextButton from "@/components/NextButton";
 import PageWithTapToNext from "@/components/PageWithTapToNext";
 import { Name } from "@/constants/localStorageConstants";
 import { useState, useEffect } from "react";

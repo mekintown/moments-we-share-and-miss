@@ -2,6 +2,7 @@
 import NextButton from "@/components/NextButton";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
+
 export default function Page() {
   return (
     <>
