@@ -13,11 +13,11 @@ export const templateByColor: Record<string, Promise<string>> = Object.values(
   colorSlugMap
 ).reduce((acc, slug) => {
   acc[slug] = fetch(
-    `${BASE_MEDIA_URL}${TEMPLATE_DIR}/memorycardtemplate-${slug}.png`
+    `${BASE_MEDIA_URL}${TEMPLATE_DIR}/memorycardtemplate-${slug}.jpg`
   )
     .then((r) => r.arrayBuffer())
     .then(
-      (buf) => `data:image/png;base64,${Buffer.from(buf).toString("base64")}`
+      (buf) => `data:image/jpeg;base64,${Buffer.from(buf).toString("base64")}`
     );
   return acc;
 }, {} as Record<string, Promise<string>>);
