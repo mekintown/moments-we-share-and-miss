@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -7,68 +6,40 @@ import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import NextButton from "@/components/NextButton";
 
-import {
-  ImageSrc,
-  Location,
-  MissedPerson,
-  Name,
-  WebAnswerColor,
-  WebAnswerImportant,
-  WebAnswerWhy,
-  WebQuestionColor,
-  WebQuestionSound,
-} from "@/constants/localStorageConstants";
-
-import { colorSlugMap } from "@/lib/slugMap";
-
-type BlobUrl = { url: string; blob: Blob };
+import { ensureOgImage } from "@/lib/ogPrefetch";
 
 const Page = () => {
-  const [img, setImg] = useState<BlobUrl | null>(null);
-  const [blurred, setBlur] = useState(true);
-
-  const buildPayload = () => {
-    const ls = (k: string) => localStorage.getItem(k) || "";
-
-    const colorEnum = ls(WebQuestionColor) as keyof typeof colorSlugMap | "";
-    const colorSlug = colorEnum ? colorSlugMap[colorEnum] : "blue";
-
-    return {
-      name: ls(Name),
-      missedPerson: ls(MissedPerson),
-      location: ls(Location),
-      webAnswerColor: ls(WebAnswerColor),
-      webAnswerImportant: ls(WebAnswerImportant),
-      webAnswerWhy: ls(WebAnswerWhy),
-      webQuestionSound: ls(WebQuestionSound),
-      webQuestionColor: colorSlug,
-      imageSrc: ls(ImageSrc).replace(/\.webp$/, ".png"),
-    };
-  };
+  const [url, setUrl] = useState<string | null>(null);
+  const [blur, setBlur] = useState(true);
 
   useEffect(() => {
-    (async () => {
-      try {
-        const res = await fetch("/api/og", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(buildPayload()),
-        });
-        const blob = await res.blob();
-        const url = URL.createObjectURL(blob);
-        setImg({ url, blob });
-      } catch (err) {
-        console.error("OG fetch failed:", err);
-      } finally {
+    const dataUrl = sessionStorage.getItem("ogDataUrl");
+    if (dataUrl) {
+      setUrl(dataUrl);
+      setBlur(false);
+      return;
+    }
+
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === "ogDataUrl" && e.newValue) {
+        setUrl(e.newValue);
         setBlur(false);
       }
-    })();
+    };
+    window.addEventListener("storage", onStorage);
+
+    ensureOgImage()
+      .then(setUrl)
+      .catch(() => {})
+      .finally(() => setBlur(false));
+
+    return () => window.removeEventListener("storage", onStorage);
   }, []);
 
   const handleDownload = () => {
-    if (!img) return;
+    if (!url) return;
     const a = document.createElement("a");
-    a.href = img.url;
+    a.href = url;
     a.download = `moments-we-miss-${Date.now()}.png`;
     document.body.appendChild(a);
     a.click();
@@ -78,16 +49,17 @@ const Page = () => {
   return (
     <motion.div
       className="row-span-4"
-      animate={{ filter: blurred ? "blur(20px)" : "blur(0px)" }}
+      animate={{ filter: blur ? "blur(20px)" : "blur(0px)" }}
       transition={{ duration: 0.6 }}
     >
       <div className="flex flex-col items-center justify-center gap-10">
-        {img && (
-          <Image
-            src={img.url}
+        {url && (
+          <img
+            src={url}
             alt="moments_we_miss"
             width={1080}
             height={1920}
+            className="object-contain"
           />
         )}
 
