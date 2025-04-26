@@ -23,7 +23,7 @@ const nameLineHeight = "50px";
 const fontColor = "#71673E";
 
 export const GET = async (request: NextRequest) => {
-  const BASE_MEDIA_URL = process.env.BASE_MEDIA_URL;
+  const BASE_MEDIA_URL = "https://media.themomentsweshareandmiss.com";
 
   const fontData = await fetch(
     `${BASE_MEDIA_URL}/fonts/Pridi/Pridi-Light.ttf`
