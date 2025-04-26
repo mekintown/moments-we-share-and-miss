@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import NextButton from "@/components/NextButton";
-import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import { Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import NextButton from "@/components/NextButton";
+
 import {
   ImageSrc,
   Location,
@@ -16,110 +18,91 @@ import {
   WebQuestionColor,
   WebQuestionSound,
 } from "@/constants/localStorageConstants";
-import Image from "next/image";
-import { WebColor } from "@/enums/enums";
+
 import { colorSlugMap } from "@/lib/slugMap";
 
+type BlobUrl = { url: string; blob: Blob };
+
 const Page = () => {
-  const [ogImageUrl, setOgImageUrl] = useState("");
-  const [blurred, setBlurred] = useState(true);
+  const [img, setImg] = useState<BlobUrl | null>(null);
+  const [blurred, setBlur] = useState(true);
+
+  const buildPayload = () => {
+    const ls = (k: string) => localStorage.getItem(k) || "";
+
+    const colorEnum = ls(WebQuestionColor) as keyof typeof colorSlugMap | "";
+    const colorSlug = colorEnum ? colorSlugMap[colorEnum] : "blue";
+
+    return {
+      name: ls(Name),
+      missedPerson: ls(MissedPerson),
+      location: ls(Location),
+      webAnswerColor: ls(WebAnswerColor),
+      webAnswerImportant: ls(WebAnswerImportant),
+      webAnswerWhy: ls(WebAnswerWhy),
+      webQuestionSound: ls(WebQuestionSound),
+      webQuestionColor: colorSlug,
+      imageSrc: ls(ImageSrc).replace(/\.webp$/, ".png"),
+    };
+  };
+
   useEffect(() => {
-    try {
-      const storageItems = {
-        name: localStorage.getItem(Name) || "",
-        missedPerson: localStorage.getItem(MissedPerson) || "",
-        webQuestionColor:
-          (localStorage.getItem(WebQuestionColor) as WebColor) || "",
-        webAnswerColor: localStorage.getItem(WebAnswerColor) || "",
-        webAnswerImportant: localStorage.getItem(WebAnswerImportant) || "",
-        webAnswerWhy: localStorage.getItem(WebAnswerWhy) || "",
-        location: localStorage.getItem(Location) || "",
-        webQuestionSound: localStorage.getItem(WebQuestionSound) || "",
-        imageSrc: localStorage.getItem(ImageSrc) || "",
-      };
-
-      const urlParams = new URLSearchParams();
-
-      if (storageItems.name) urlParams.append(Name, storageItems.name);
-      if (storageItems.webQuestionColor)
-        urlParams.append(
-          WebQuestionColor,
-          colorSlugMap[storageItems.webQuestionColor]
-        );
-      if (storageItems.missedPerson)
-        urlParams.append(MissedPerson, storageItems.missedPerson);
-      if (storageItems.location)
-        urlParams.append(Location, storageItems.location);
-      if (storageItems.webAnswerColor)
-        urlParams.append(WebAnswerColor, storageItems.webAnswerColor);
-      if (storageItems.webQuestionSound)
-        urlParams.append(WebQuestionSound, storageItems.webQuestionSound);
-      if (storageItems.webAnswerImportant)
-        urlParams.append(WebAnswerImportant, storageItems.webAnswerImportant);
-      if (storageItems.webAnswerWhy)
-        urlParams.append(WebAnswerWhy, storageItems.webAnswerWhy);
-      if (storageItems.imageSrc)
-        urlParams.append(
-          ImageSrc,
-          storageItems.imageSrc.replace(/\.webp$/, ".png")
-        );
-
-      setOgImageUrl(`/api/og?${urlParams.toString()}`);
-      setBlurred(false);
-    } catch (error) {
-      console.error("Error retrieving data from localStorage:", error);
-      setOgImageUrl("/api/og?color=white");
-    }
+    (async () => {
+      try {
+        const res = await fetch("/api/og", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(buildPayload()),
+        });
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        setImg({ url, blob });
+      } catch (err) {
+        console.error("OG fetch failed:", err);
+      } finally {
+        setBlur(false);
+      }
+    })();
   }, []);
 
-  const handleDownload = async () => {
-    if (!ogImageUrl) return;
-
-    try {
-      const response = await fetch(ogImageUrl);
-      const blob = await response.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      const downloadLink = document.createElement("a");
-      downloadLink.href = blobUrl;
-      downloadLink.download = `moments-we-miss-${new Date().getTime()}.png`;
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      document.body.removeChild(downloadLink);
-      URL.revokeObjectURL(blobUrl);
-    } catch (error) {
-      console.error("Error downloading image:", error);
-    }
+  const handleDownload = () => {
+    if (!img) return;
+    const a = document.createElement("a");
+    a.href = img.url;
+    a.download = `moments-we-miss-${Date.now()}.png`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   return (
-    <>
-      <motion.div
-        className="row-span-4"
-        animate={{ filter: blurred ? "blur(20px)" : "blur(0px)" }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="flex flex-col items-center justify-center gap-10">
-          {ogImageUrl && (
-            <Image
-              src={ogImageUrl}
-              alt="moments_we_miss"
-              width={1080}
-              height={1920}
-            />
-          )}
-          <div className="flex space-x-3">
-            <Button
-              size="icon"
-              className="bg-main-yellow"
-              onClick={handleDownload}
-            >
-              <Download style={{ scale: 1.25 }} />
-            </Button>
-            <NextButton url="web-ending-3" />
-          </div>
+    <motion.div
+      className="row-span-4"
+      animate={{ filter: blurred ? "blur(20px)" : "blur(0px)" }}
+      transition={{ duration: 0.6 }}
+    >
+      <div className="flex flex-col items-center justify-center gap-10">
+        {img && (
+          <Image
+            src={img.url}
+            alt="moments_we_miss"
+            width={1080}
+            height={1920}
+          />
+        )}
+
+        <div className="flex space-x-3">
+          <Button
+            size="icon"
+            className="bg-main-yellow"
+            onClick={handleDownload}
+          >
+            <Download style={{ scale: 1.25 }} />
+          </Button>
+          <NextButton url="web-ending-3" />
         </div>
-      </motion.div>
-    </>
+      </div>
+    </motion.div>
   );
 };
 
