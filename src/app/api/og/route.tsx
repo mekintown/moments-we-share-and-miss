@@ -45,7 +45,6 @@ export const GET = async (request: NextRequest) => {
     return new ImageResponse(
       (
         <div
-          lang="th"
           style={{
             height: "100%",
             width: "100%",
@@ -105,22 +104,20 @@ export const GET = async (request: NextRequest) => {
             >
               {location}
             </div>
-            <p
+            <div
               style={{
                 position: "absolute",
                 display: "block",
                 top: "810px",
                 left: "675px",
                 width: "350px",
-                textIndent: "100px",
-                overflowWrap: "break-word",
-                wordWrap: "break-word",
-                whiteSpace: "normal",
-                wordBreak: "break-word",
+                whiteSpace: "pre-wrap",
+                wordBreak: "break-all",
               }}
             >
-              {webAnswerWhy}
-            </p>
+              {"\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0" +
+                webAnswerWhy}
+            </div>
           </div>
           <div
             style={{

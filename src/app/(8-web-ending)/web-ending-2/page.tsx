@@ -5,24 +5,24 @@ import { motion } from "framer-motion";
 import NextButton from "@/components/NextButton";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
-import { colorSlugMap } from "@/lib/slugMap";
-import { WebColor } from "@/enums/enums";
 import {
-  Name,
+  ImageSrc,
   Location,
+  MissedPerson,
+  Name,
   WebAnswerColor,
   WebAnswerImportant,
   WebAnswerWhy,
   WebQuestionColor,
   WebQuestionSound,
-  MissedPerson,
-  ImageSrc,
 } from "@/constants/localStorageConstants";
 import Image from "next/image";
+import { WebColor } from "@/enums/enums";
+import { colorSlugMap } from "@/lib/slugMap";
 
 const Page = () => {
   const [ogImageUrl, setOgImageUrl] = useState("");
-
+  const [blurred, setBlurred] = useState(true);
   useEffect(() => {
     try {
       const storageItems = {
@@ -65,6 +65,7 @@ const Page = () => {
         );
 
       setOgImageUrl(`/api/og?${urlParams.toString()}`);
+      setBlurred(false);
     } catch (error) {
       console.error("Error retrieving data from localStorage:", error);
       setOgImageUrl("/api/og?color=white");
@@ -75,26 +76,15 @@ const Page = () => {
     if (!ogImageUrl) return;
 
     try {
-      // Fetch the image
       const response = await fetch(ogImageUrl);
       const blob = await response.blob();
-
-      // Create a temporary URL for the blob
       const blobUrl = URL.createObjectURL(blob);
-
-      // Create a temporary anchor element
       const downloadLink = document.createElement("a");
-
-      // Set attributes for download
       downloadLink.href = blobUrl;
       downloadLink.download = `moments-we-miss-${new Date().getTime()}.png`;
-
-      // Append to body, click, and remove
       document.body.appendChild(downloadLink);
       downloadLink.click();
       document.body.removeChild(downloadLink);
-
-      // Clean up the blob URL
       URL.revokeObjectURL(blobUrl);
     } catch (error) {
       console.error("Error downloading image:", error);
@@ -105,7 +95,7 @@ const Page = () => {
     <>
       <motion.div
         className="row-span-4"
-        // animate={{ filter: blurred ? "blur(20px)" : "blur(0px)" }}
+        animate={{ filter: blurred ? "blur(20px)" : "blur(0px)" }}
         transition={{ duration: 0.6 }}
       >
         <div className="flex flex-col items-center justify-center gap-10">
