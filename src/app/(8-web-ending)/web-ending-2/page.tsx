@@ -7,6 +7,17 @@ import { Button } from "@/components/ui/button";
 import NextButton from "@/components/NextButton";
 
 import { ensureOgImage } from "@/lib/ogPrefetch";
+import { WebQuestionColor } from "@/constants/localStorageConstants";
+import { BASE_MEDIA_URL } from "@/lib/ogAssets";
+import { colorSlugMap } from "@/lib/slugMap";
+
+const getTemplateUrl = () => {
+  const stored = localStorage.getItem(WebQuestionColor) as
+    | keyof typeof colorSlugMap
+    | "";
+  const slug = stored ? colorSlugMap[stored] : "blue";
+  return `${BASE_MEDIA_URL}/memorycards/templates/memorycardtemplate-${slug}.jpg`;
+};
 
 const Page = () => {
   const [url, setUrl] = useState<string | null>(null);
@@ -30,7 +41,9 @@ const Page = () => {
 
     ensureOgImage()
       .then(setUrl)
-      .catch(() => {})
+      .catch(() => {
+        setUrl(getTemplateUrl());
+      })
       .finally(() => setBlur(false));
 
     return () => window.removeEventListener("storage", onStorage);

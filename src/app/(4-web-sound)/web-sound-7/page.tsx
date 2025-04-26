@@ -6,7 +6,6 @@ import NextButton from "@/components/NextButton";
 import { TextAreaWithCounter } from "@/components/TextAreaWithCounter";
 import { Name, WebQuestionSound } from "@/constants/localStorageConstants";
 import { ensureOgImage } from "@/lib/ogPrefetch";
-import { buildOgPayload } from "@/lib/ogPayload";
 
 const Page = () => {
   const [answerSound, setAnswerSound] = useState("");
