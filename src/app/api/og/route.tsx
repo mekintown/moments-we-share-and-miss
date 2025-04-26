@@ -114,10 +114,13 @@ export const POST = async (req: NextRequest) => {
           style={{
             position: "absolute",
             top: "1230px",
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "80%",
             textAlign: "center",
+            whiteSpace: "pre-wrap",
+            overflowWrap: "break-word",
+            wordBreak: "break-word",
           }}
         >
           {webAnswerImportant}
