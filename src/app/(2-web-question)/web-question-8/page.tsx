@@ -35,7 +35,7 @@ const Page = () => {
               }}
               value={answerImportant}
               maxCount={120}
-              className="h-9/10"
+              className="h-8/10"
             />
           </div>
         </div>
