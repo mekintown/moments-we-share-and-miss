@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
-const BASE_MEDIA_URL = process.env.BASE_MEDIA_URL || "";
-const BASE_AUDIO_URL = process.env.BASE_AUDIO_URL || "";
+const BASE_MEDIA_URL = "https://media.themomentsweshareandmiss.com";
+const BASE_AUDIO_URL = "https://pub-f412b46c1b174c90bd26d7b54b3b4ed2.r2.dev";
 
 const assetPaths = [
   "animations",
