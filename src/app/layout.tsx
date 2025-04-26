@@ -12,7 +12,7 @@ const pridi = Pridi({
 });
 
 export const metadata: Metadata = {
-  title: "Moments We Share (and miss)",
+  title: "The Moments We Share (and miss)",
 };
 
 const RootLayout = ({
