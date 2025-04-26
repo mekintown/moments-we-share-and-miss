@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import NextButton from "@/components/NextButton";
