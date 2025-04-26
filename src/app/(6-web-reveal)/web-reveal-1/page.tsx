@@ -1,9 +1,8 @@
 "use client";
-
-import { useState, useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import NextButton from "@/components/NextButton";
+import PageWithTapToNext from "@/components/PageWithTapToNext";
 
 import {
   ImageSrc,
@@ -16,7 +15,6 @@ import {
   MissedPerson,
   MissedPersonRelationShip,
 } from "@/constants/localStorageConstants";
-
 import { LocationType, PersonType } from "@/enums/enums";
 import { parentSlugMap, childSlugMap, locationSlugMap } from "@/lib/slugMap";
 
@@ -27,13 +25,11 @@ const RevealSequence = () => {
   const [who, setWho] = useState<PersonType | null>(null);
   const [whom, setWhom] = useState<PersonType | null>(null);
   const [why, setWhy] = useState<string | null>(null);
-
-  const [answerImportant, setAnswerImportant] = useState<string | null>(null);
+  const [answerImportant, setImportant] = useState<string | null>(null);
   const [color, setColor] = useState<string | null>(null);
   const [colorAnswer, setColorAnswer] = useState<string | null>(null);
   const [answerSound, setAnswerSound] = useState<string | null>(null);
-
-  const [imageSrc, setImageSrc] = useState<string>(
+  const [imageSrc, setImageSrc] = useState(
     "/memorycards/illustrations/daughter/daughter_mom_beach.webp"
   );
 
@@ -45,33 +41,32 @@ const RevealSequence = () => {
     );
     setWhy(localStorage.getItem(WebAnswerWhy));
 
-    setAnswerImportant(localStorage.getItem(WebAnswerImportant));
+    setImportant(localStorage.getItem(WebAnswerImportant));
     setColor(localStorage.getItem(WebQuestionColor));
     setColorAnswer(localStorage.getItem(WebAnswerColor));
     setAnswerSound(localStorage.getItem(WebQuestionSound));
   }, []);
 
   useLayoutEffect(() => {
-    if (imageSrc && location && who && whom) {
+    if (location && who && whom) {
       const [parent, child] =
         parentSlugMap[who] && childSlugMap[whom]
           ? [parentSlugMap[who], childSlugMap[whom]]
           : [parentSlugMap[whom], childSlugMap[who]];
 
       const locSlug = locationSlugMap[location];
-
       if (parent && child && locSlug) {
-        const constructed = `/memorycards/illustrations/${child}/${child}_${parent}_${locSlug}.webp`;
-        setImageSrc(constructed);
-        localStorage.setItem(ImageSrc, constructed);
-        // warm‑up
-        const img = new window.Image();
-        img.src = constructed;
+        const path = `/memorycards/illustrations/${child}/${child}_${parent}_${locSlug}.webp`;
+        setImageSrc(path);
+        localStorage.setItem(ImageSrc, path);
+        new window.Image().src = path; // warm-up
       }
     }
-  }, [imageSrc, location, who, whom]);
+  }, [location, who, whom]);
 
-  const renderStepText = () => {
+  const nextStep = () => setStep((s) => (s + 1) as 2 | 3 | 4);
+
+  const render = () => {
     switch (step) {
       case 1:
         return (
@@ -100,8 +95,20 @@ const RevealSequence = () => {
   };
 
   return (
-    <>
-      <div className=" absolute top-6  p-10 flex flex-col items-center text-main-cream text-subheader">
+    <PageWithTapToNext
+      nextUrl="/web-conclusion-1"
+      enabled={step === 4}
+      label="แตะเพื่อไปต่อ"
+    >
+      {step < 4 && (
+        <button
+          aria-label="แตะเพื่อไปต่อ"
+          className="absolute inset-0 z-0 cursor-pointer"
+          onClick={nextStep}
+        />
+      )}
+
+      <div className="absolute top-6 p-10 flex flex-col items-center text-main-cream text-subheader">
         <Image
           src={imageSrc}
           alt="memory"
@@ -109,6 +116,7 @@ const RevealSequence = () => {
           height={300}
           className="w-[300px] h-[300px] object-contain"
         />
+
         <AnimatePresence mode="wait">
           <motion.div
             key={step}
@@ -118,29 +126,11 @@ const RevealSequence = () => {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.8 }}
           >
-            {renderStepText()}
+            {render()}
           </motion.div>
         </AnimatePresence>
       </div>
-
-      <div className="row-start-4">
-        {step < 4 ? (
-          <button
-            onClick={() => setStep((s) => (s + 1) as 2 | 3 | 4)}
-            className="text-remark text-main-cream opacity-60 hover:opacity-100 hover:text-main-cream hover:bg-transparent"
-          >
-            แตะเพื่อไปต่อ
-          </button>
-        ) : (
-          <NextButton
-            variant="ghost"
-            label="แตะเพื่อไปต่อ"
-            url="/web-conclusion-1"
-            className="text-remark text-main-cream opacity-60 hover:opacity-100 hover:text-main-cream hover:bg-transparent"
-          />
-        )}
-      </div>
-    </>
+    </PageWithTapToNext>
   );
 };
 
