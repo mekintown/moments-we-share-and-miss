@@ -45,6 +45,7 @@ export const GET = async (request: NextRequest) => {
     return new ImageResponse(
       (
         <div
+          lang="th"
           style={{
             height: "100%",
             width: "100%",

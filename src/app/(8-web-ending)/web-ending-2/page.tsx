@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import NextButton from "@/components/NextButton";
 import { Button } from "@/components/ui/button";
-import { Download, Images } from "lucide-react";
+import { Download } from "lucide-react";
 import { colorSlugMap } from "@/lib/slugMap";
 import { WebColor } from "@/enums/enums";
 import {
