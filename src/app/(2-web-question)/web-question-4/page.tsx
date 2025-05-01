@@ -79,7 +79,7 @@ const Page = () => {
                   value={customLocation}
                   onChange={(e) => setCustomLocation(e.target.value)}
                   placeholder="พิมพ์สถานที่…"
-                  className="absolute inset-0 w-[80%] h-full rounded-md rounded-r-none` border-2 border-r-0 border-main-cream bg-main-cream/10 px-2 text-main-cream placeholder:text-main-cream/60 backdrop-blur-sm focus:outline-none"
+                  className="absolute inset-0 w-[80%] h-full rounded-md rounded-r-none border-2 border-r-0 border-main-cream bg-main-cream/10 px-2 text-main-cream placeholder:text-main-cream/60 backdrop-blur-sm focus:outline-none"
                 />
               )}
             </AnimatePresence>
