@@ -1,4 +1,5 @@
 import {
+  CustomLocation,
   ImageSrc,
   Location,
   MissedPerson,
@@ -14,13 +15,16 @@ import { colorSlugMap } from "@/lib/slugMap";
 export const buildOgPayload = () => {
   const ls = (k: string) => localStorage.getItem(k) || "";
 
+  const locEnum = ls(Location);
+  const location = locEnum === "อื่นๆ" ? ls(CustomLocation) : locEnum;
+
   const colorEnum = ls(WebQuestionColor) as keyof typeof colorSlugMap | "";
   const colorSlug = colorEnum ? colorSlugMap[colorEnum] : "blue";
 
   return {
     name: ls(Name),
     missedPerson: ls(MissedPerson),
-    location: ls(Location),
+    location,
     webAnswerColor: ls(WebAnswerColor),
     webAnswerImportant: ls(WebAnswerImportant),
     webAnswerWhy: ls(WebAnswerWhy),

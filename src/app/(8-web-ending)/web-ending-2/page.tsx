@@ -6,8 +6,9 @@ import { Button } from "@/components/ui/button";
 import NextButton from "@/components/NextButton";
 
 import { ensureOgImage } from "@/lib/ogPrefetch";
-import { WebQuestionColor } from "@/constants/localStorageConstants";
 import { BASE_MEDIA_URL } from "@/lib/ogAssets";
+import { WebQuestionColor } from "@/constants/localStorageConstants";
+
 import { colorSlugMap } from "@/lib/slugMap";
 
 const getTemplateUrl = () => {

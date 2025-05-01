@@ -21,7 +21,7 @@ export const POST = async (req: NextRequest) => {
   const webQuestionColor = body.webQuestionColor ?? "blue"; // slug
   const name = clamp(body.name, 60);
   const missedPerson = clamp(body.missedPerson, 60);
-  const location = clamp(body.location, 60);
+  const location = clamp(body.location, 20);
   const webAnswerWhy = clamp(body.webAnswerWhy, 150);
   const webAnswerImportant = clamp(body.webAnswerImportant, 150);
   const webAnswerColor = clamp(body.webAnswerColor, 140);
