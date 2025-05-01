@@ -13,11 +13,9 @@ import {
   WebAnswerColor,
   WebQuestionSound,
   MissedPerson,
-  MissedPersonRelationShip,
   CustomLocation,
 } from "@/constants/localStorageConstants";
 import { LocationType, PersonType } from "@/enums/enums";
-import { parentSlugMap, childSlugMap, locationSlugMap } from "@/lib/slugMap";
 import { shortLabel } from "@/lib/utils";
 
 const RevealSequence = () => {
@@ -26,7 +24,6 @@ const RevealSequence = () => {
   const [location, setLocation] = useState<LocationType | null>(null);
   const [customLocation, setCustomLocation] = useState<string | null>(null);
   const [who, setWho] = useState<PersonType | null>(null);
-  const [whom, setWhom] = useState<PersonType | null>(null);
   const [why, setWhy] = useState<string | null>(null);
   const [answerImportant, setImportant] = useState<string | null>(null);
   const [color, setColor] = useState<string | null>(null);
@@ -40,33 +37,16 @@ const RevealSequence = () => {
     setLocation(localStorage.getItem(Location) as LocationType | null);
     setCustomLocation(localStorage.getItem(CustomLocation));
     setWho(localStorage.getItem(MissedPerson) as PersonType | null);
-    setWhom(
-      localStorage.getItem(MissedPersonRelationShip) as PersonType | null
-    );
     setWhy(localStorage.getItem(WebAnswerWhy));
 
     setImportant(localStorage.getItem(WebAnswerImportant));
     setColor(localStorage.getItem(WebQuestionColor));
     setColorAnswer(localStorage.getItem(WebAnswerColor));
     setAnswerSound(localStorage.getItem(WebQuestionSound));
+
+    const savedImg = localStorage.getItem(ImageSrc);
+    if (savedImg) setImageSrc(savedImg);
   }, []);
-
-  useLayoutEffect(() => {
-    if (location && who && whom) {
-      const [parent, child] =
-        parentSlugMap[who] && childSlugMap[whom]
-          ? [parentSlugMap[who], childSlugMap[whom]]
-          : [parentSlugMap[whom], childSlugMap[who]];
-
-      const locSlug = locationSlugMap[location];
-      if (parent && child && locSlug) {
-        const path = `/memorycards/illustrations/${child}/${child}_${parent}_${locSlug}.webp`;
-        setImageSrc(path);
-        localStorage.setItem(ImageSrc, path);
-        new window.Image().src = path; // warm-up
-      }
-    }
-  }, [location, who, whom]);
 
   const nextStep = () => setStep((s) => (s + 1) as 2 | 3 | 4);
 
@@ -109,7 +89,7 @@ const RevealSequence = () => {
       {step < 4 && (
         <button
           aria-label="แตะเพื่อไปต่อ"
-          className="absolute inset-0 z-1 cursor-pointer"
+          className="absolute inset-0 z-0 cursor-pointer"
           onClick={nextStep}
         />
       )}
