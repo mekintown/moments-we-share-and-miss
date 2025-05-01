@@ -11,6 +11,8 @@ import {
   WebQuestionSound,
 } from "@/constants/localStorageConstants";
 import { colorSlugMap } from "@/lib/slugMap";
+import { shortLabel } from "./utils";
+import { PersonType } from "@/enums/enums";
 
 export const buildOgPayload = () => {
   const ls = (k: string) => localStorage.getItem(k) || "";
@@ -23,7 +25,7 @@ export const buildOgPayload = () => {
 
   return {
     name: ls(Name),
-    missedPerson: ls(MissedPerson),
+    missedPerson: shortLabel(ls(MissedPerson) as PersonType),
     location,
     webAnswerColor: ls(WebAnswerColor),
     webAnswerImportant: ls(WebAnswerImportant),
