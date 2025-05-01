@@ -109,7 +109,7 @@ const RevealSequence = () => {
       {step < 4 && (
         <button
           aria-label="แตะเพื่อไปต่อ"
-          className="absolute inset-0 z-0 cursor-pointer"
+          className="absolute inset-0 z-1 cursor-pointer"
           onClick={nextStep}
         />
       )}
