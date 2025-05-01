@@ -1,3 +1,5 @@
+"use client";
+
 import { VariantProps } from "class-variance-authority";
 import { Button, buttonVariants } from "./ui/button";
 import Link from "next/link";
