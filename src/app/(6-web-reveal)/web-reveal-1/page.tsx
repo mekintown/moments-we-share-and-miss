@@ -1,5 +1,5 @@
 "use client";
-import { useLayoutEffect, useState } from "react";
+import { useCallback, useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import PageWithTapToNext from "@/components/PageWithTapToNext";
@@ -16,7 +16,12 @@ import {
   MissedPersonRelationShip,
   CustomLocation,
 } from "@/constants/localStorageConstants";
-import { LocationType, PersonType } from "@/enums/enums";
+import {
+  ChildType,
+  GrandChildType,
+  LocationType,
+  PersonType,
+} from "@/enums/enums";
 import { parentSlugMap, childSlugMap, locationSlugMap } from "@/lib/slugMap";
 
 const RevealSequence = () => {
@@ -34,6 +39,14 @@ const RevealSequence = () => {
   const [imageSrc, setImageSrc] = useState(
     "/memorycards/illustrations/daughter/daughter_mom_beach.webp"
   );
+
+  const shortLabel = useCallback((p: PersonType | null) => {
+    if (!p) return "";
+    if (Object.values(ChildType).includes(p as ChildType)) return "ลูก";
+    if (Object.values(GrandChildType).includes(p as GrandChildType))
+      return "หลาน";
+    return p;
+  }, []);
 
   useLayoutEffect(() => {
     setLocation(localStorage.getItem(Location) as LocationType | null);
@@ -78,7 +91,7 @@ const RevealSequence = () => {
             <div>
               อยู่ที่{" "}
               {location !== LocationType.Others ? location : customLocation} กับ{" "}
-              {who}
+              {shortLabel(who)}
             </div>
             <div>ตอนที่ {why}</div>
           </>
