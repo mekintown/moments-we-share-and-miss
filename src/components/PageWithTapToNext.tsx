@@ -32,22 +32,20 @@ const PageWithTapToNext = ({
 
       {children}
 
-      {enabled && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2 }}
-          className="row-start-4 z-10 pointer-events-none"
-        >
-          <NextButton
-            variant="ghost"
-            label={label}
-            url={enabled ? nextUrl : "#"}
-            disabled={!enabled}
-            className="text-remark text-main-cream opacity-60 hover:opacity-100 hover:text-main-cream hover:bg-transparent"
-          />
-        </motion.div>
-      )}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2 }}
+        className="row-start-4 z-10 pointer-events-none"
+      >
+        <NextButton
+          variant="ghost"
+          label={label}
+          url={enabled ? nextUrl : "#"}
+          disabled={!enabled}
+          className="text-remark text-main-cream opacity-60 hover:opacity-100 hover:text-main-cream hover:bg-transparent"
+        />
+      </motion.div>
     </>
   );
 };

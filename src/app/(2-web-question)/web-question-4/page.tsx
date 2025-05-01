@@ -36,7 +36,11 @@ const Page = () => {
     (location !== LocationType.Others || customLocation.trim().length > 0);
 
   return (
-    <PageWithTapToNext nextUrl={"web-question-5"} enabled={!!isReady}>
+    <PageWithTapToNext
+      nextUrl={"web-question-5"}
+      enabled={!!isReady}
+      label={!isReady ? "" : "แตะเพิ่อไปต่อ"}
+    >
       <div className="row-start-2 row-span-2 text-center text-subheader text-main-cream space-y-3">
         <div>แล้วช่วงเวลานั้น&nbsp;เกิดขึ้น…</div>
 
