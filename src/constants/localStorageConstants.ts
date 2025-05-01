@@ -6,6 +6,8 @@ export const WebAnswerColor = "web_answer_color";
 export const MissedPerson = "missed_person";
 export const MissedPersonRelationShip = "missed_person_relationship";
 export const Location = "location";
+export const CustomLocation = "customLocation";
+
 export const WebAnswerWhy = "web_answer_why";
 export const WebQuestionSound = "web_question_sound";
 export const WebAnswerImportant = "web_answer_important";

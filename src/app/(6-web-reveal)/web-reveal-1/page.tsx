@@ -14,6 +14,7 @@ import {
   WebQuestionSound,
   MissedPerson,
   MissedPersonRelationShip,
+  CustomLocation,
 } from "@/constants/localStorageConstants";
 import { LocationType, PersonType } from "@/enums/enums";
 import { parentSlugMap, childSlugMap, locationSlugMap } from "@/lib/slugMap";
@@ -22,6 +23,7 @@ const RevealSequence = () => {
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
 
   const [location, setLocation] = useState<LocationType | null>(null);
+  const [customLocation, setCustomLocation] = useState<string | null>(null);
   const [who, setWho] = useState<PersonType | null>(null);
   const [whom, setWhom] = useState<PersonType | null>(null);
   const [why, setWhy] = useState<string | null>(null);
@@ -35,6 +37,7 @@ const RevealSequence = () => {
 
   useLayoutEffect(() => {
     setLocation(localStorage.getItem(Location) as LocationType | null);
+    setCustomLocation(localStorage.getItem(CustomLocation));
     setWho(localStorage.getItem(MissedPerson) as PersonType | null);
     setWhom(
       localStorage.getItem(MissedPersonRelationShip) as PersonType | null
@@ -73,7 +76,9 @@ const RevealSequence = () => {
           <>
             <div>เรา…</div>
             <div>
-              อยู่ที่ {location} กับ {who}
+              อยู่ที่{" "}
+              {location !== LocationType.Others ? location : customLocation} กับ{" "}
+              {who}
             </div>
             <div>ตอนที่ {why}</div>
           </>
