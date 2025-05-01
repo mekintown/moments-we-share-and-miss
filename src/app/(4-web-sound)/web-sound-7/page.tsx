@@ -4,8 +4,17 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import NextButton from "@/components/NextButton";
 import { TextAreaWithCounter } from "@/components/TextAreaWithCounter";
-import { Name, WebQuestionSound } from "@/constants/localStorageConstants";
+import {
+  ImageSrc,
+  Location,
+  MissedPerson,
+  MissedPersonRelationShip,
+  Name,
+  WebQuestionSound,
+} from "@/constants/localStorageConstants";
 import { ensureOgImage } from "@/lib/ogPrefetch";
+import { LocationType, PersonType } from "@/enums/enums";
+import { parentSlugMap, childSlugMap, locationSlugMap } from "@/lib/slugMap";
 
 const Page = () => {
   const [answerSound, setAnswerSound] = useState("");
@@ -18,6 +27,25 @@ const Page = () => {
   }, [answerSound]);
 
   const handleNext = () => {
+    const loc = localStorage.getItem(Location) as LocationType | null;
+    const who = localStorage.getItem(MissedPerson) as PersonType | null;
+    const whom = localStorage.getItem(
+      MissedPersonRelationShip
+    ) as PersonType | null;
+
+    if (loc && who && whom) {
+      const [parent, child] =
+        parentSlugMap[who] && childSlugMap[whom]
+          ? [parentSlugMap[who], childSlugMap[whom]]
+          : [parentSlugMap[whom], childSlugMap[who]];
+
+      const locSlug = locationSlugMap[loc];
+      if (parent && child && locSlug) {
+        const path = `/memorycards/illustrations/${child}/${child}_${parent}_${locSlug}.webp`;
+        localStorage.setItem(ImageSrc, path);
+      }
+    }
+
     ensureOgImage();
     router.push("/web-transition-1");
   };
