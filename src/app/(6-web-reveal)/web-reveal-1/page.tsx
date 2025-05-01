@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import PageWithTapToNext from "@/components/PageWithTapToNext";
@@ -16,13 +16,9 @@ import {
   MissedPersonRelationShip,
   CustomLocation,
 } from "@/constants/localStorageConstants";
-import {
-  ChildType,
-  GrandChildType,
-  LocationType,
-  PersonType,
-} from "@/enums/enums";
+import { LocationType, PersonType } from "@/enums/enums";
 import { parentSlugMap, childSlugMap, locationSlugMap } from "@/lib/slugMap";
+import { shortLabel } from "@/lib/utils";
 
 const RevealSequence = () => {
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
@@ -39,14 +35,6 @@ const RevealSequence = () => {
   const [imageSrc, setImageSrc] = useState(
     "/memorycards/illustrations/daughter/daughter_mom_beach.webp"
   );
-
-  const shortLabel = useCallback((p: PersonType | null) => {
-    if (!p) return "";
-    if (Object.values(ChildType).includes(p as ChildType)) return "ลูก";
-    if (Object.values(GrandChildType).includes(p as GrandChildType))
-      return "หลาน";
-    return p;
-  }, []);
 
   useLayoutEffect(() => {
     setLocation(localStorage.getItem(Location) as LocationType | null);
